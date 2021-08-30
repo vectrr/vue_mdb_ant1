@@ -6,7 +6,7 @@
     </mdb-navbar-brand>
     <mdb-navbar-toggler>
       <mdb-navbar-nav>
-        <mdb-nav-item  to="/" active>Home</mdb-nav-item>
+        <mdb-nav-item  to="/" active>Home1</mdb-nav-item>
         <mdb-nav-item href="#">Features</mdb-nav-item>
         <mdb-nav-item href="#">About us</mdb-nav-item>
         <mdb-nav-item  to="/admin">Admin</mdb-nav-item>
