@@ -17,7 +17,7 @@
                 <mdb-card-image src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%286%29.jpg" alt="Card image cap"></mdb-card-image>
                 <mdb-card-body>
                 <mdb-card-text>Key membership at medium risk/return</mdb-card-text>
-                <mdb-btn color="primary">CHOOSE GUARDIAN</mdb-btn>
+                <mdb-btn color="primary">CHOOSE GUARDIANz</mdb-btn>
                 </mdb-card-body>
             </mdb-card>
           </mdb-col>
