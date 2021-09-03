@@ -1,10 +1,10 @@
 <template>
 <div>
-
   <mdb-navbar color="info" position="top" dark transparent scrolling>
     <mdb-navbar-brand to="/"  href="https://mdbootstrap.com/docs/vue/?utm_source=DemoApp&utm_medium=MDBVue">
       15Minutes
     </mdb-navbar-brand>
+    
     <mdb-navbar-toggler>
       <mdb-navbar-nav>
         <mdb-nav-item  to="/" active>Home</mdb-nav-item>
@@ -12,7 +12,6 @@
         <mdb-nav-item href="#">About us</mdb-nav-item>
         <mdb-nav-item  to="/admin">Admin</mdb-nav-item>
       </mdb-navbar-nav>
-
     </mdb-navbar-toggler>
   </mdb-navbar>
    <main :style="{ marginTop: $store.state.docs ? '60px' : '0px' }">
