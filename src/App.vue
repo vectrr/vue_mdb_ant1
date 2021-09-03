@@ -2,7 +2,7 @@
 <div>
   <mdb-navbar color="info" position="top" dark transparent scrolling>
     <mdb-navbar-brand to="/"  href="../assets/img/hm.png">
-           <img src="./assets/img/logo.png" height="30" alt="mdb logo">
+           <img src="./assets/img/logo.png" alt="mdb logo" style="max-width:33px">
       15Minutes
     </mdb-navbar-brand>
 
