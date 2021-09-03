@@ -1,10 +1,13 @@
 <template>
   <div >
-      <mdb-mask class="d-flex justify-content-center align-items-center gradient">
-        <mdb-container class="px-md-3 px-sm-0">
+      <mdb-mask class="d-flex justify-content-center align-items-center " style="margin-top:-23%;padding-top: 30%;background: linear-gradient(337deg, #000102 15%, #a7caa4 4%, #000000 90%, rgb(0 0 0 / 87%) 4%);">
+      <!-- <mdb-mask class="d-flex justify-content-center align-items-center " style="margin-top:-23%;padding-top: 30%;background: linear-gradient(337deg, rgb(0, 1, 2) 15%, rgb(167, 202, 164) 4%, #b3cfb3 9%, rgb(137 157 137) 68%,#899e89 4%);"> -->
+
+      
+        <mdb-container class="px-md-3 px-sm-0" style="background:linear-gradient(152deg, #dce1e3 15%, #dee2e6 4%, #a5c9a2 90%, rgb(0 0 0 / 87%) 4%);">
           <mdb-row>
             <mdb-col md="12" class="mb-4 white-text text-center animated fadeIn">
-              <h3 class="display-3 font-weight-bold mb-0 pt-md-5 ">Creative Agency </h3>
+              <h3 class="display-3 font-weight-bold mb-0 pt-md-5 " style=" font-size: 3.5rem;">15Minutes Logistics</h3>
               <hr class="hr-light my-4 w-75 "  />
               <h4 class="subtext-header mt-2 mb-4" >Lorem ipsum dolor sit amet, consectetur adipisicing elit deleniti consequuntur nihil.</h4>
               <mdb-btn outline="white" rounded color="white" ><mdb-icon icon="home"/> Visit us</mdb-btn>
