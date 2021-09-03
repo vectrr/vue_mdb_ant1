@@ -1,71 +1,77 @@
 <template>
-  <div>
-    
-    <img 
-      src="../assets/img/hm.png"/>
-    <mdb-parallax
-      src="../assets/img/hm.png"
-      height="full"
-      factor="2">
-      <mdb-mask overlay="blue-slight" flexCenter>
-        <mdb-row class="mb-5 pb-5 text-center white-text">
-          <mdb-col md="12" xl="12" class="mx-auto">
-            <h1 class="display-3 font-weight-bold animated fadeInDown">Natalie <a class="indigo-text">Smith</a></h1>
-            <h5 class="font-weight-bold pt-md-5 pt-sm-2 pt-5 pb-md-5 pb-sm-3 pb-5 animated fadeInDown">Web developer & graphic designer</h5>
-            <mdb-btn size="lg animated fadeInDown" color="light-blue">portfolio</mdb-btn>
-            <mdb-btn size="lg animated fadeInDown" color="indigo">about me</mdb-btn>
-          </mdb-col>
-        </mdb-row>
+  <div >
+      <mdb-mask class="d-flex justify-content-center align-items-center gradient">
+        <mdb-container class="px-md-3 px-sm-0">
+          <mdb-row>
+            <mdb-col md="12" class="mb-4 white-text text-center animated fadeIn">
+              <h3 class="display-3 font-weight-bold mb-0 pt-md-5 ">Creative Agency </h3>
+              <hr class="hr-light my-4 w-75 "  />
+              <h4 class="subtext-header mt-2 mb-4" >Lorem ipsum dolor sit amet, consectetur adipisicing elit deleniti consequuntur nihil.</h4>
+              <mdb-btn outline="white" rounded color="white" ><mdb-icon icon="home"/> Visit us</mdb-btn>
+            </mdb-col>
+          </mdb-row>
+        </mdb-container>
       </mdb-mask>
-    </mdb-parallax>
-    <main>
-      <mdb-container>
-        <!--Grid row-->
-        <mdb-row class="py-5">
-          <!--Grid column-->
-          <mdb-col md="12" class="text-center">
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
-          </mdb-col>
-          <!--Grid column-->
-        </mdb-row>
-        <!--Grid row-->
-      </mdb-container>
-    </main>
+
   </div>
 </template>
 <script>
-  import {  mdbContainer, mdbParallax, mdbMask, mdbRow, mdbCol, mdbBtn } from 'mdbvue';
+  import { mdbContainer, mdbRow, mdbCol, mdbMask, mdbBtn,  } from 'mdbvue';
   export default {
-    name: 'ParallaxPage',
+    name: 'AppPage',
     components: {
-      // mdbNavbar,
-      // mdbNavbarBrand,
-      // mdbNavbarToggler,
-      // mdbNavbarNav,
-      // mdbNavItem,
-      // mdbInput,
       mdbContainer,
-      mdbParallax,
-      mdbMask,
       mdbRow,
       mdbCol,
-      mdbBtn
+     
+      
+      mdbMask,
+      mdbBtn,
+      
+      
     }
-  }
+  };
 </script>
-<style>
-  .top-nav-collapse {
-    background-color: #82b1ff !important;
-  }
+<style scoped>
+    h1 {
+      font-weight: bolder;
+      letter-spacing: 8px;
+    }
+    h1, h5 {
+      text-transform: uppercase;
+    }
 
-  h1, h5 {
-    text-transform: uppercase;
-  }
+    h5 {
+      letter-spacing: 3px;
+          font-weight: 300;
+    }
 
-  h5 {
-    letter-spacing: 3px;
-  }
+    .hr-light {
+      border-top: 3px solid #fff;
+      width: 80px;
+    }
+    .navbar {
+      transition: 1s;
+    }
+    .navbar .md-form {
+      margin: 0;
+    }
+    .top-nav-collapse {
+      background-color: #78909c !important;
+    }
+    @media (max-width: 990px){
+      .navbar {
+        background-color: #78909c !important;
+      }
+    }
+    .gradient {
+      background: -moz-linear-gradient(45deg, rgba(42, 27, 161, 0.7), rgba(29, 210, 177, 0.7) 100%);
+      background: -webkit-linear-gradient(45deg, rgba(42, 27, 161, 0.7), rgba(29, 210, 177, 0.7) 100%);
+      background: -webkit-gradient(linear, 45deg, from(rgba(42, 27, 161, 0.7)), to(rgba(29, 210, 177, 0.7)));
+      background: -o-linear-gradient(45deg, rgba(42, 27, 161, 0.7), rgba(29, 210, 177, 0.7) 100%);
+      background: linear-gradient(45deg, rgba(42, 27, 161, 0.7), rgba(29, 210, 177, 0.7) 100%);
+    }
+    h6 {
+        line-height: 1.7;
+    }
 </style>

@@ -1,17 +1,19 @@
 <template>
 <div>
-  <mdb-navbar color="info" position="top" dark transparent scrolling>
-    <mdb-navbar-brand to="/"  href="https://mdbootstrap.com/docs/vue/?utm_source=DemoApp&utm_medium=MDBVue">
+  <mdb-navbar color="info" position="top" dark>
+    <mdb-navbar-brand to="/"  href="https://mdbootstrap.com/">
       15Minutes
     </mdb-navbar-brand>
-    
     <mdb-navbar-toggler>
       <mdb-navbar-nav>
-        <mdb-nav-item  to="/" active>Home</mdb-nav-item>
+        <mdb-nav-item  to="/" active>Home1</mdb-nav-item>
         <mdb-nav-item href="#">Features</mdb-nav-item>
         <mdb-nav-item href="#">About us</mdb-nav-item>
         <mdb-nav-item  to="/admin">Admin</mdb-nav-item>
       </mdb-navbar-nav>
+      <form>
+        <mdb-input type="text" class="text-white" placeholder="Search" aria-label="Search" label navInput waves waves-fixed/>
+      </form>
     </mdb-navbar-toggler>
   </mdb-navbar>
    <main :style="{ marginTop: $store.state.docs ? '60px' : '0px' }">
@@ -31,7 +33,7 @@
     </div>
 </template>
 <script>
-  import { mdbNavbar, mdbNavbarBrand, mdbNavbarToggler, mdbNavbarNav, mdbNavItem,  } from 'mdbvue';
+  import { mdbNavbar, mdbNavbarBrand, mdbNavbarToggler, mdbNavbarNav, mdbNavItem, mdbInput } from 'mdbvue';
   export default {
     name: 'NavbarPage',
     components: {
@@ -40,7 +42,7 @@
       mdbNavbarToggler,
       mdbNavbarNav,
       mdbNavItem,
-     
+      mdbInput
     }
   }
 </script>
