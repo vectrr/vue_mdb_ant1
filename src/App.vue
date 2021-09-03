@@ -2,7 +2,7 @@
 <div>
   <mdb-navbar color="info" position="top" dark>
     <mdb-navbar-brand to="/"  href="https://mdbootstrap.com/">
-      15Minutes
+      15Minutes1
     </mdb-navbar-brand>
     <mdb-navbar-toggler>
       <mdb-navbar-nav>
