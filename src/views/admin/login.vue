@@ -45,7 +45,7 @@
           <mdb-btn color="cyan" type="submit">Register</mdb-btn>
         </div>
       </form>
-
+<imd src="../../s/s1/api.php"/>
       
     </mdb-card-body>
   </mdb-card>
@@ -105,11 +105,12 @@
     pass:this.pass
  };
       
-
+var murl=this.$store.state.mUrl;
+// alert(murl);
         axios({
           method: 'POST',
           // url: 'http://localhost/nw/vap/regApi.php?apicall=signup'
-          url: 'http://localhost/w/15minutes/api.php?apicall=admin_l',
+          url: murl+'api.php?apicall=admin_l',
           data: article,
           config: { headers: {'Content-Type': 'multipart/form-data' }}
       })
@@ -119,7 +120,7 @@
         // console.log("response2: "+response.data);
         if(response.data.val==22 & !response.data.error){
           
-          // var key=this.$store.mKey;
+          // var key=this.$store.state.mKey;
           // var cName = this.$Dcrypt.encrypt("response.data.name",  "key");
           // var cId = this.$Dcrypt.encrypt(response.data.id,  key);
           var cName=response.data.name;

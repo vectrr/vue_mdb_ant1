@@ -1,0 +1,1 @@
+SELECT id FROM clients  where id='318'
