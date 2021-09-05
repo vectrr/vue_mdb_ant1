@@ -77,6 +77,7 @@
     };
   },
   mounted() {
+    
     this.$nextTick(() => {
       // To disabled submit button at the beginning.
       this.form.validateFields();
@@ -117,8 +118,17 @@
         console.log("response1: "+ JSON.stringify(response.data));
         // console.log("response2: "+response.data);
         if(response.data.val==22 & !response.data.error){
-          this.$cookies.set("admin",response.data.name,"22min");
-          this.$cookies.set("id",response.data.id,"22min");
+          
+          // var key=this.$store.mKey;
+          // var cName = this.$Dcrypt.encrypt("response.data.name",  "key");
+          // var cId = this.$Dcrypt.encrypt(response.data.id,  key);
+          var cName=response.data.name;
+          var cId=response.data.id
+          this.$cookies.set("admin",cName,"22min");
+          this.$cookies.set("id",cId,"22min");
+          this.$router.push('/Products');
+          
+
           // this.$cookies.remove("id" ) 
         }
 

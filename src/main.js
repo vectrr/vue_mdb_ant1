@@ -20,6 +20,10 @@ import axios from 'axios'
 import VueAxios from 'vue-axios'
 
 import VueCookies from 'vue-cookies'
+import * as cr from 'vue-nacl-crypter' 
+const Dcrypt = cr.VueNaclCrypter
+ 
+Vue.use(Dcrypt)
 Vue.use(VueCookies)
 Vue.$cookies.config('7d')
 
@@ -27,6 +31,7 @@ Vue.use(VueAxios, axios)
 Vue.use(Antd);
 Vue.config.productionTip = false
 Vue.use(VueMaterial)
+// Vue.use(isMobile)
 
 new Vue({
   router,
