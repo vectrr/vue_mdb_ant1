@@ -56,10 +56,23 @@
         <div class="grey-text">
         
           <mdb-input label="Your email" icon="envelope" group type="email" validate error="wrong" success="right" @input="hEmail"/>
+  <b-form-group
+      id="fieldset-1"
+      description="Let us know your name."
+      label="Enter your name"
+      label-for="input-1"
+      valid-feedback="Thank you!"
+      :invalid-feedback="invalidFeedback"
+      :state="state"
+    >
+      <b-form-input id="input-1" v-model="name" :state="state" trim></b-form-input>
+    </b-form-group>
+    
             <md-field>
               <label>Multiple</label>
               <md-file v-model="multiple" multiple />
           </md-field>
+
           <mdb-input label="Your password" icon="lock" group type="password" validate @input="hPass"/>
         </div>
         <div class="text-center py-4 mt-3">
