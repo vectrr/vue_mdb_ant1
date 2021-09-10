@@ -56,7 +56,10 @@
         <div class="grey-text">
         
           <mdb-input label="Your email" icon="envelope" group type="email" validate error="wrong" success="right" @input="hEmail"/>
-     
+            <md-field>
+              <label>Multiple</label>
+              <md-file v-model="multiple" multiple />
+          </md-field>
           <mdb-input label="Your password" icon="lock" group type="password" validate @input="hPass"/>
         </div>
         <div class="text-center py-4 mt-3">
