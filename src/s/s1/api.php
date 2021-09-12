@@ -47,54 +47,84 @@ require_once 'cors.php';
       }
     break;
     
-  case 'cd':  
-    if(isTheseParametersAvailable(array('cd'))){
-      // if(1==1){
-      $data=array();
-      $cd = $_POST['cd'];
-      $filename="d.txt";
-     
-     
-      $arr = json_decode($cd, true);
-      foreach($arr as $item) { //foreach element in $arr
-        
-        $id = $item['id']; 
-       
-        $nm = $item['nm']; 
-        $nu = $item['nu']; 
-        $am = $item['am']; 
-        $dt = $item['dt']; 
+case 'a_up':
+  // $all=file_get_contents('php://input');
+  // echo "all: ".extract($_POST);
+  if(isTheseParametersAvailable(array('nm'))){
+    
+    $nm=$data["nm"];
+    // $un=
+    // $pr=$_POST["pr"];
+    // $co=$_POST["co"];
+    // $sb=$_POST["sb"];
+    // $lo=$_POST["lo"];
 
-        $qa="SELECT id FROM clients  where id='$id'";
-        $cd = $qa;
-        
-        $qa1=mysqli_query($conn,$qa);
-          if(@mysqli_num_rows($qa1)<1){	
-                    
-            $qb="insert into clients (id,name,number,amount,dt) values('$id','$nm','$nu','$am','$dt')";
 
-            $cd = $qb;
-            if($qb1=mysqli_query($conn,$qb)){
-              $cd = "added";
-              $response['error'] = false;
-              $response['code'] = 2;									
-              $cd = 'added';
-              
-              }				
-          }
 
-       
-            
-        }
+  //   function file_already_uploaded($file_name,$c)
+  //  {
+  //   $query1 = "SELECT * FROM img WHERE name = '".$file_name."'";
+  //   $qb3=mysqli_query($c,$query1);
   
-        file_put_contents($filename, $cd);
-      } else{
-        $response['error'] = true;   
-        $response['message'] = 'required parameters are not available';
-        $filename="d.txt"; 
-        file_put_contents($filename, $response['message']);
-      }
-    break;
+  //   if(@mysqli_num_rows($qb3)>0)
+  //   {
+  //    return true;
+  //   }
+  //   else
+  //   {
+  //    return false;
+  //   }
+  //  }
+  // var_dump($data);
+    sleep(3);
+
+    for($count=0; $count<count($_FILES["files"]["name"]); $count++)
+    {
+     $file_name = $_FILES["files"]["name"][$count];
+     $tmp_name = $_FILES["files"]['tmp_name'][$count];
+     $file_array = explode(".", $file_name);
+     $file_extension = end($file_array);
+     $c=$conn;
+    //  if(file_already_uploaded($file_name,$c))
+    //  {
+    //   $file_name = $file_array[0] . '-'. rand() . '.' . $file_extension;
+    //  }
+    $file_name = $file_array[0] . '-'. rand() . '.' . $file_extension;
+     
+   if(!is_dir('files/'.$nm)){
+     mkdir('files/'.$nm);
+   }
+     $location = 'files/'.$nm.'/'. $file_name;
+     
+      
+    
+     if(move_uploaded_file($tmp_name, $location))
+     {
+      $query = "
+      INSERT INTO img (pnm, name) 
+      VALUES ('".$nm."','".$file_name."')
+      ";
+      $qb2=mysqli_query($conn,$query);
+      
+      $response['message'] = 'failed uploaded';
+     }else{
+      $response['message'] = 'error failed upload';
+      //  echo"error failed upload";
+     }
+    }
+ 
+    // $q1 = "INSERT INTO property (name, unit, price,co,sb,lo) VALUES ('".$nm."', '".$un."', '".$pr."', '".$co."', '".$sb."', '".$lo."' )";
+    // $qb1=mysqli_query($conn,$q1);
+    // if($qb1){
+    //   $response['message'] = 'data inserted to property';
+    // }
+
+    $response['message'] = $_FILES;
+  }else{  
+    $response['error'] = true;   
+    $response['message'] = 'required parameters are not available11';   
+} 
+break;
 default:   
  $response['error'] = true;   
  $response['message'] = 'Invalid Operation Called';  
