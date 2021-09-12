@@ -15,15 +15,15 @@
         >
         <a-menu-item key="1">
             <a-icon type="pie-chart" />
-            <span>Option 1 </span>
+            <span>Motocycles</span>
         </a-menu-item>
         <a-menu-item key="2">
             <a-icon type="desktop" />
-            <span>Option 2</span>
+            <span>Spare parts</span>
         </a-menu-item>
         <a-menu-item key="3">
             <a-icon type="inbox" />
-            <span>Option 3</span>
+            <span>Upload</span>
         </a-menu-item>
     
         </a-menu>

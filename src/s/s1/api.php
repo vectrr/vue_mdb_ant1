@@ -53,6 +53,9 @@ case 'a_up':
   if(isTheseParametersAvailable(array('nm'))){
     
     $nm=$data["nm"];
+    $desc=$data["desc"];
+    $type=$data["type"];
+    $am=$data["am"];
     // $un=
     // $pr=$_POST["pr"];
     // $co=$_POST["co"];
@@ -61,21 +64,33 @@ case 'a_up':
 
 
 
-  //   function file_already_uploaded($file_name,$c)
-  //  {
-  //   $query1 = "SELECT * FROM img WHERE name = '".$file_name."'";
-  //   $qb3=mysqli_query($c,$query1);
+    function file_already_uploaded($file_name,$c)
+   {
+    $query1 = "SELECT * FROM products WHERE img = '".$file_name."'";
+    $qb3=mysqli_query($c,$query1);
   
-  //   if(@mysqli_num_rows($qb3)>0)
-  //   {
-  //    return true;
-  //   }
-  //   else
-  //   {
-  //    return false;
-  //   }
-  //  }
+    if(@mysqli_num_rows($qb3)>0)
+    {
+     return true;
+    }
+    else
+    {
+     return false;
+    }
+   }
   // var_dump($data);
+  
+    $mArray=array();
+    $q1 = "Select * from images   ORDER BY id DESC limit 1";
+    $mid=0;
+    $q1a=mysqli_query($conn,$q1);
+    if(@mysqli_num_rows($q1a)>0){
+			while($row=@mysqli_fetch_assoc($q1a)){
+        $mid=$row["id"];
+		}
+	}
+    $mid=$mid+1;
+
     sleep(3);
 
     for($count=0; $count<count($_FILES["files"]["name"]); $count++)
@@ -85,11 +100,11 @@ case 'a_up':
      $file_array = explode(".", $file_name);
      $file_extension = end($file_array);
      $c=$conn;
-    //  if(file_already_uploaded($file_name,$c))
-    //  {
-    //   $file_name = $file_array[0] . '-'. rand() . '.' . $file_extension;
-    //  }
-    $file_name = $file_array[0] . '-'. rand() . '.' . $file_extension;
+     if(file_already_uploaded($file_name,$c))
+     {
+      $file_name = $file_array[0] . '-'. rand() . '.' . $file_extension;
+     }
+    // $file_name = $file_array[0] . '-'. rand() . '.' . $file_extension;
      
    if(!is_dir('files/'.$nm)){
      mkdir('files/'.$nm);
@@ -100,10 +115,14 @@ case 'a_up':
     
      if(move_uploaded_file($tmp_name, $location))
      {
+
+      array_push($mArray,$location);
+     
+
       $query = "
-      INSERT INTO img (pnm, name) 
-      VALUES ('".$nm."','".$file_name."')
-      ";
+      INSERT INTO images (loc, mid) 
+      VALUES ('".$location."','".$mid."')";
+
       $qb2=mysqli_query($conn,$query);
       
       $response['message'] = 'failed uploaded';
@@ -113,13 +132,18 @@ case 'a_up':
      }
     }
  
+  
+    
     // $q1 = "INSERT INTO property (name, unit, price,co,sb,lo) VALUES ('".$nm."', '".$un."', '".$pr."', '".$co."', '".$sb."', '".$lo."' )";
-    // $qb1=mysqli_query($conn,$q1);
-    // if($qb1){
-    //   $response['message'] = 'data inserted to property';
-    // }
 
-    $response['message'] = $_FILES;
+    $query = "INSERT INTO products (img, price,description,type,name) VALUES ('".$mid."','".$am."','".$desc."','".$type."','".$nm."')";
+    $qb1=mysqli_query($conn,$query);
+
+    if($qb1){
+      $response['message'] = 'data inserted to property';
+    }
+
+    // $response['message'] = $_FILES;
   }else{  
     $response['error'] = true;   
     $response['message'] = 'required parameters are not available11';   
