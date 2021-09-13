@@ -52,10 +52,10 @@ case 'a_up':
   // echo "all: ".extract($_POST);
   if(isTheseParametersAvailable(array('nm'))){
     
-    $nm=$data["nm"];
-    $desc=$data["desc"];
-    $type=$data["type"];
-    $am=$data["am"];
+    $nm=$_POST["nm"];
+    $desc=$_POST["desc"];
+    $type=$_POST["type"];
+    $am=$_POST["am"];
     // $un=
     // $pr=$_POST["pr"];
     // $co=$_POST["co"];
@@ -140,13 +140,13 @@ case 'a_up':
     $qb1=mysqli_query($conn,$query);
 
     if($qb1){
-      $response['message'] = 'data inserted to property';
+      $response['message'] = $query;
     }
 
     // $response['message'] = $_FILES;
   }else{  
     $response['error'] = true;   
-    $response['message'] = 'required parameters are not available11';   
+    $response['message'] = 'required parameters are not available1';   
 } 
 break;
 default:   

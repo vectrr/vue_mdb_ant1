@@ -45,27 +45,7 @@
 
         <md-card-content>
           <div class="md-layout md-gutter">
-            <div class="md-layout-item md-small-size-100">
-              <md-field :class="getValidationClass('firstName')">
-                <label for="first-name">Name</label>
-                <md-input name="first-name" id="first-name" autocomplete="given-name" v-model="form.firstName" :disabled="sending" />
-                <span class="md-error" v-if="!$v.form.firstName.required">The first name is required</span>
-                <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid name</span>
-              </md-field>
-            </div>
-
-            <div class="md-layout-item md-small-size-100">
-              <md-field :class="getValidationClass('lastName')">
-                <label for="last-name">Description</label>
-                <md-input name="last-name" id="last-name" autocomplete="family-name" v-model="form.lastName" :disabled="sending" />
-                <span class="md-error" v-if="!$v.form.lastName.required">The last name is required</span>
-                <span class="md-error" v-else-if="!$v.form.lastName.minlength">Invalid last name</span>
-              </md-field>
-            </div>
-          </div>
-
-          <div class="md-layout md-gutter">
-            <div class="md-layout-item md-small-size-100">
+              <div class="md-layout-item md-small-size-100">
               <md-field :class="getValidationClass('gender')">
                 <label for="gender">Gender</label>
                 <md-select name="gender" id="gender" v-model="form.gender" md-dense :disabled="sending">
@@ -77,6 +57,28 @@
               </md-field>
             </div>
 
+            <div class="md-layout-item md-small-size-100">
+              <md-field :class="getValidationClass('firstName')">
+                <label for="first-name">Name</label>
+                <md-input name="first-name" id="first-name" autocomplete="given-name" v-model="form.firstName" :disabled="sending" />
+                <span class="md-error" v-if="!$v.form.firstName.required">The first name is required</span>
+                <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid name</span>
+              </md-field>
+            </div>
+
+       
+          </div>
+
+          <div class="md-layout md-gutter">
+          
+            <div class="md-layout-item md-small-size-100">
+              <md-field :class="getValidationClass('lastName')">
+                <label for="last-name">Description</label>
+                <md-input name="last-name" id="last-name" autocomplete="family-name" v-model="form.lastName" :disabled="sending" />
+                <span class="md-error" v-if="!$v.form.lastName.required">The last name is required</span>
+                <span class="md-error" v-else-if="!$v.form.lastName.minlength">Invalid last name</span>
+              </md-field>
+            </div>
             <div class="md-layout-item md-small-size-100">
               <md-field :class="getValidationClass('age')">
                 <label for="age">Age</label>
@@ -720,6 +722,10 @@ const axios = require('axios');
       form_data.append('files[' + i + ']', file);
     }
       form_data.append('nm',this.form.firstName);
+      form_data.append('desc',this.form.lastName);
+      form_data.append('type',this.form.gender);
+      form_data.append('am',this.form.age);
+
       console.log("f1: "+form_data.get("file[]"));
       console.log("form_data: "+JSON.stringify(this.files));
        for (var pair of form_data.entries()){
