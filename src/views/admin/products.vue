@@ -40,14 +40,14 @@
     justify-content: space-around;" class="md-layout" @submit.prevent="validateUser">
       <md-card class="md-layout-item md-size-50 md-small-size-100">
         <md-card-header>
-          <div class="md-title">Users</div>
+          <div class="md-title">Products</div>
         </md-card-header>
 
         <md-card-content>
           <div class="md-layout md-gutter">
               <div class="md-layout-item md-small-size-100">
               <md-field :class="getValidationClass('gender')">
-                <label for="gender">Gender</label>
+                <label for="gender">Category</label>
                 <md-select name="gender" id="gender" v-model="form.gender" md-dense :disabled="sending">
                   <md-option></md-option>
                   <md-option value="M">Motocycle</md-option>
@@ -81,10 +81,10 @@
             </div>
             <div class="md-layout-item md-small-size-100">
               <md-field :class="getValidationClass('age')">
-                <label for="age">Age</label>
+                <label for="age">Price</label>
                 <md-input type="number" id="age" name="age" autocomplete="age" v-model="form.age" :disabled="sending" />
-                <span class="md-error" v-if="!$v.form.age.required">The age is required</span>
-                <span class="md-error" v-else-if="!$v.form.age.maxlength">Invalid age</span>
+                <span class="md-error" v-if="!$v.form.age.required">The Price is required</span>
+                <span class="md-error" v-else-if="!$v.form.age.maxlength">Invalid Price</span>
               </md-field>
             </div>
           </div>
@@ -94,7 +94,7 @@
             
             <UploadImages  @changed="handleImages"/>
             
-            <span class="md-error" v-if="!$v.form.email.required">An Im required</span>
+            <span class="md-error" v-if="!$v.form.email.required">An Image is required</span>
             <span class="md-error" v-else-if="!$v.form.email.email">Invalid email</span>
           </md-field>
         </md-card-content>
@@ -106,7 +106,7 @@
         </md-card-actions>
       </md-card>
 
-      <md-snackbar :md-active.sync="userSaved">The user {{ lastUser }} was saved with success!</md-snackbar>
+      <md-snackbar :md-active.sync="userSaved">The Product {{ lastUser }} was saved with success!</md-snackbar>
      
     </form>
     
@@ -658,7 +658,7 @@ const axios = require('axios');
         },
         age: {
           required,
-          maxLength: maxLength(3)
+          maxLength: maxLength(10)
         },
         gender: {
           required
