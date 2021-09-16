@@ -149,12 +149,12 @@ const axios = require('axios');
               sort: true
             },
             {
-              label: 'Position',
+              label: 'Type',
               field: 'position',
               sort: true
             },
             {
-              label: 'Office',
+              label: 'Price',
               field: 'office',
               sort: true
             },
@@ -169,7 +169,7 @@ const axios = require('axios');
               sort: true
             },
             {
-              label: 'Salary',
+              label: 'Price',
               field: 'salary',
               sort: false,
               format: value => '£' + value
@@ -731,6 +731,7 @@ const axios = require('axios');
        for (var pair of form_data.entries()){
         console.log(pair[0]+', '+pair[1]);
       }
+      
 axios({
           method: 'POST',
           // url: 'http://localhost/nw/vap/regApi.php?apicall=signup'

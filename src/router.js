@@ -5,8 +5,7 @@ import Router from 'vue-router'
 import Main from './views/mainContent.vue'
 import Admin from './views/admin/login.vue'
 import Products from './views/admin/products.vue'
-// import Patch from './views/patch.vue'
-// import Home1 from '../demo/docs/HomePage'
+import Motocycles from './views/products/motocycles.vue'
 
 Vue.use(Router)
 
@@ -27,6 +26,11 @@ export default new Router({
       path: '/products',
       name: 'Products',
       component: Products
+    },
+    {
+      path: '/motocycles',
+      name: 'Motocycles',
+      component: Motocycles
     },
     // {
     //   path:  '/post/:postId/:postName/:postOccupation/:postEmail/:postBio/edit',

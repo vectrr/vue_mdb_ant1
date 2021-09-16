@@ -47,6 +47,43 @@ require_once 'cors.php';
       }
     break;
     
+  case 'a_m':  
+    if($data){
+      // if(1==1){
+      // $data=array();
+      // $email = $data['email'];
+      // $pasword = $data['pass'];
+      
+      $qa="SELECT * FROM products ";
+      $qa1=mysqli_query($conn,$qa);
+      $mData=array();
+      while($row=@mysqli_fetch_assoc($qa1)){
+        $mData []=$row;
+        $mid=$row["pid"];
+		}
+        if(@mysqli_num_rows($qa1)>0){	             
+          $response['error'] = false;   
+          $response['message'] = "ok";   
+          $response['val'] = 2;   
+          // $response['id'] = $id;   
+          // $response['name'] = $name;	
+            
+          $response['data'] = $mData;
+        }else{
+          $response['error'] = false;   
+          $response['message'] = 0;
+          $response['val'] = 0;   
+          // $response['id'] = $id;  
+          $response['data'] = $qa1;
+        }
+     
+   
+      } else{
+        $response['error'] = true;   
+        $response['message'] = 'required parameters are not available';
+      }
+    break;
+ 
 case 'a_up':
   // $all=file_get_contents('php://input');
   // echo "all: ".extract($_POST);
