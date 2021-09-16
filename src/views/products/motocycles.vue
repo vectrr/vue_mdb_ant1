@@ -18,7 +18,7 @@
       </mdb-container>
   
      </div>
-    <mlist :posts="posts" />
+    <mlist :posts="products" />
    
   </Layout>
 </template>
@@ -45,7 +45,7 @@ export default {
 
   data() {
     return {
-      posts: [],
+      products: [],
     }
   },
   methods: {
@@ -74,15 +74,15 @@ axios({
         
         if(results.val==2){
           console.log(myData)
-            this.posts = myData.map(post => ({
+            this.products = myData.map(post => ({
             
           id: post.pid,
           name: post.name,
-          occupation: post.img,
-          email: post.type,
-          bio: post.description,
-          created_at: post.name,
-          updated_at: post.name
+          images: post.img,
+          description: post.description,
+          type: post.type,
+          // created_at: post.name,
+          // updated_at: post.name
          
         }))
         }

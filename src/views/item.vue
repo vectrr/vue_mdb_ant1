@@ -18,12 +18,8 @@
                     <br/>
                     <p style="float:left">Bio: </p>
                     <h5 data-v-4e623858="" data-v-40b8d964="" class="card-text" data-v-9645230c="">{{ post.bio }}</h5>
-                    <br/>
-                    <p style="float:left">created_at: </p>
-                    <h5 data-v-4e623858="" data-v-40b8d964="" class="card-text" data-v-9645230c="">{{ post.created_at }}</h5>
-                    <br/>
-                    <p style="float:left">updated_at: </p>
-                    <h5 data-v-4e623858="" data-v-40b8d964="" class="card-text" data-v-9645230c="">{{ post.updated_at }}</h5>
+                   
+                  
                     
                 </mdb-card-text>
                 <router-link :to="'/post/' + post.id+ '/'+post.name + '/'+post.occupation+ '/' +post.email+ '/' +post.bio + '/edit'" class="float-right"><mdb-btn color="elegant">CLick to Edit</mdb-btn></router-link>
