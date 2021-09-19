@@ -66,7 +66,8 @@
             <div class="md-layout-item md-small-size-100">
               <md-field :class="getValidationClass('firstName')">
                 <label for="first-name">Name</label>
-                <md-input name="first-name" id="first-name" autocomplete="given-name" v-model="form.firstName" :disabled="sending" />
+                <a-input placeholder="Name" name="first-name" id="first-name" autocomplete="given-name" v-model="form.firstName" :disabled="sending" />
+                <!-- <md-input name="first-name" id="first-name" autocomplete="given-name" v-model="form.firstName" :disabled="sending" /> -->
                 <span class="md-error" v-if="!$v.form.firstName.required">The first name is required</span>
                 <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid name</span>
               </md-field>
@@ -108,7 +109,7 @@
        
 
         <md-card-actions>
-          <md-button type="submit" class="md-primary" :disabled="sending">Create user</md-button>
+          <md-button type="submit" class="md-primary" :disabled="sending">Post Product</md-button>
         </md-card-actions>
       </md-card>
 

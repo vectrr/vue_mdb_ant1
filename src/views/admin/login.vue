@@ -42,7 +42,7 @@
           <mdb-input label="Your password" icon="lock" group type="password" validate @input="hPass"/>
         </div>
         <div class="text-center py-4 mt-3">
-          <mdb-btn color="cyan" type="submit">Register</mdb-btn>
+          <mdb-btn color="cyan" type="submit">Login</mdb-btn>
         </div>
       </form>
 <imd src="../../s/s1/api.php"/>
