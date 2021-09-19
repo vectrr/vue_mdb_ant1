@@ -1,11 +1,11 @@
 <template>
   <Layout>
     <div style="margin-top: -15px; overflow-x: ;">
-       <mdb-edge-header color="teal darken-2">
+       <!-- <mdb-edge-header color="teal darken-2">
         <div class="home-page-background"></div>
-      </mdb-edge-header>
+      </mdb-edge-header> -->
            
-    <mdb-container class="free-bird">
+    <!-- <mdb-container class="free-bird">
         <mdb-row>
           <mdb-col md="10" class="mx-auto white z-depth-1 py-2 px-2">
             <mdb-card-body>
@@ -15,7 +15,7 @@
             </mdb-card-body>
           </mdb-col>
         </mdb-row>
-      </mdb-container>
+      </mdb-container> -->
   
      </div>
     <mlist :posts="products" />
@@ -26,7 +26,7 @@
 <script>
 import mlist from "./list.vue"
 import axios from "axios"
-import { mdbContainer, mdbCol, mdbRow,  mdbEdgeHeader,  mdbCardBody } from 'mdbvue';
+// import { mdbContainer, mdbCol, mdbRow,  mdbEdgeHeader,  mdbCardBody } from 'mdbvue';
 // import data from "./posts.json"
 
 export default {
@@ -34,12 +34,12 @@ export default {
     // Layout,
     // NewsFilter,
     mlist,
-    mdbContainer,
-    mdbCol,
-    mdbRow,
-    mdbEdgeHeader,
+    // mdbContainer,
+    // mdbCol,
+    // mdbRow,
+    // mdbEdgeHeader,
     
-    mdbCardBody
+    // mdbCardBody
   },
   
 
