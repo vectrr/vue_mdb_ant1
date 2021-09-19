@@ -1,7 +1,46 @@
 <template>
   <div class="mTop">
+
+  <a-layout id="components-layout-demo-responsive">
+    <a-affix :offset-top="top" class="mTop">
+    <a-layout-sider 
+    
+      breakpoint="lg"
+      collapsed-width="0"
+      @collapse="onCollapse"
+      @breakpoint="onBreakpoint"
+    >
+      <div class="logo" />
+      <a-menu theme="dark" mode="inline" :default-selected-keys="['3']">
+        <a-menu-item key="1">
+          <a-icon type="user" />
+          <span class="nav-text">Motocycle</span>
+        </a-menu-item>
+        <a-menu-item key="2">
+          <a-icon type="tool" />
+          <span class="nav-text">Spare parts</span>
+        </a-menu-item>
+        <a-menu-item key="3">
+          <a-icon type="upload" />
+          <span class="nav-text">Upload</span>
+        </a-menu-item>
+      </a-menu>
+    </a-layout-sider>
+    </a-affix>
+    <a-layout class="mTop">
+      <!-- <a-layout-header :style="{ background: '#fff', padding: 0 }" /> -->
+      <a-layout-content :style="{ margin: '54px 16px 0' }">
+        <div :style="{ padding: '24px', background: '#fff', minHeight: '360px' }">
+           <mUpload  />
+        </div>
+      </a-layout-content>
+      <!-- <a-layout-footer style="textAlign: center">
+        Ant Design ©2018 Created by Ant UED
+      </a-layout-footer> -->
+    </a-layout>
+  </a-layout>
     <div style="width: 100%">
-    <a-affix :offset-top="top">
+    <!-- <a-affix :offset-top="top">
       <div style="background-color:#001529;height:63px;margin-top:-50px;" ></div>
        <md-progress-bar md-mode="indeterminate" v-if="sending" />
          <div style="width: 256px">
@@ -50,104 +89,19 @@
     
         </a-menu>
     </div>
- </a-affix>
+ </a-affix> -->
    </div>
-   
-  <mdb-card style="width:99%;max-width:1200px;margin-bottom:3%;padding:0px;margin-top" >
-    <mdb-card-body>
-  <mdb-card style="width:99%;max-width:1400px;margin-top:3%;" >
-    <mdb-card-body>
-          <!-- <mdb-datatable-2 striped bordered small hover responsive fixedHeader
-      arrows maxHeight="400px" v-model="data" /> -->
-      
-    <form novalidate style="
-    margin-left: auto;
-    margin-right: auto;
-    justify-content: space-around;" class="md-layout" @submit.prevent="validateUser">
-      <md-card class="md-layout-item md-size-50 md-small-size-100">
-        <md-card-header>
-          <div class="md-title">Products</div>
-        </md-card-header>
-
-        <md-card-content>
-          <div class="md-layout md-gutter">
-              <div class="md-layout-item md-small-size-100">
-              <md-field :class="getValidationClass('gender')">
-                <label for="gender">Category</label>
-                <md-select name="gender" id="gender" v-model="form.gender" md-dense :disabled="sending">
-                  <md-option></md-option>
-                  <md-option value="Motocycle">Motocycle</md-option>
-                  <md-option value="Spareparts">Spareparts</md-option>
-                </md-select>
-                <span class="md-error">Product type is required</span>
-              </md-field>
-            </div>
-
-            <div class="md-layout-item md-small-size-100">
-              <md-field :class="getValidationClass('firstName')">
-                <label for="first-name">Name</label>
-                <a-input placeholder="Name" name="first-name" id="first-name" autocomplete="given-name" v-model="form.firstName" :disabled="sending" />
-                <!-- <md-input name="first-name" id="first-name" autocomplete="given-name" v-model="form.firstName" :disabled="sending" /> -->
-                <span class="md-error" v-if="!$v.form.firstName.required">The first name is required</span>
-                <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid name</span>
-              </md-field>
-            </div>
-
-       
-          </div>
-
-          <div class="md-layout md-gutter">
-          
-            <div class="md-layout-item md-small-size-100">
-              <md-field :class="getValidationClass('lastName')">
-                <label for="last-name">Description</label>
-                <md-input name="last-name" id="last-name" autocomplete="family-name" v-model="form.lastName" :disabled="sending" />
-                <span class="md-error" v-if="!$v.form.lastName.required">The last name is required</span>
-                <span class="md-error" v-else-if="!$v.form.lastName.minlength">Invalid last name</span>
-              </md-field>
-            </div>
-            <div class="md-layout-item md-small-size-100">
-              <md-field :class="getValidationClass('age')">
-                <label for="age">Price</label>
-                <md-input type="number" id="age" name="age" autocomplete="age" v-model="form.age" :disabled="sending" />
-                <span class="md-error" v-if="!$v.form.age.required">The Price is required</span>
-                <span class="md-error" v-else-if="!$v.form.age.maxlength">Invalid Price</span>
-              </md-field>
-            </div>
-          </div>
-
-          <md-field :class="getValidationClass('email')">
-            <label for="email">Email</label>
-            
-            <UploadImages  @changed="handleImages"/>
-            
-            <span class="md-error" v-if="!$v.form.email.required">An Image is required</span>
-            <span class="md-error" v-else-if="!$v.form.email.email">Invalid email</span>
-          </md-field>
-        </md-card-content>
-
-       
-
-        <md-card-actions>
-          <md-button type="submit" class="md-primary" :disabled="sending">Post Product</md-button>
-        </md-card-actions>
-      </md-card>
-
-      <md-snackbar :md-active.sync="userSaved">The Product {{ lastUser }} was saved with success!</md-snackbar>
-     
-    </form>
-    
-    </mdb-card-body>
-  </mdb-card>
-    </mdb-card-body>
-  </mdb-card>
+ 
+  
   </div>
 </template>
 
 <script>
-  import {  mdbCard, mdbCardBody,  } from 'mdbvue';
+
+import mUpload from "./upload.vue"
+  // import {  mdbCard, mdbCardBody,  } from 'mdbvue';
   
- import UploadImages from "vue-upload-drop-images"
+//  import UploadImages from "vue-upload-drop-images"
   import { validationMixin } from 'vuelidate';
   import {
     required,
@@ -159,16 +113,17 @@
 const axios = require('axios');
   export default {
       components: {
-        UploadImages,
-        mdbCard,
-        mdbCardBody,
+        mUpload,
+        // UploadImages,
+        // mdbCard,
+        // mdbCardBody,
         // mdbIcon,
         // mdbDatatable2 
       },
     name: 'Products',
     mixins: [validationMixin],
     data: () => ({
-      top: 50,
+      top: 70,
         collapsed: true,
        data: {
           
@@ -700,7 +655,12 @@ const axios = require('axios');
       }
     },
     methods: {
-      
+        onCollapse(collapsed, type) {
+      console.log(collapsed, type);
+    },
+    onBreakpoint(broken) {
+      console.log(broken);
+    },
    toggleCollapsed() {
       this.collapsed = !this.collapsed;
       // alert( this.collapsed );
@@ -820,8 +780,8 @@ const axios = require('axios');
         /* margin-top: 73px; */
         // background: linear-gradient(337deg,$c1 15%,  $c4 4%);
         background: linear-gradient($c2,$c3);
-        margin-top: -23%;
-        padding-top: 30%;
+        // margin-top: -23%;
+        // padding-top: 30%;
     }
         ul.ant-menu-inline-collapsed {
     width: 8px;
