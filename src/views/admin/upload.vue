@@ -1,5 +1,5 @@
 <template>
-  <div class="mTop">
+  <div class="mTopu">
       
       <!-- <div style="background-color:#001529;height:63px;margin-top:-50px;" ></div> -->
  <md-progress-bar md-mode="indeterminate" v-if="sending" />

@@ -1,4 +1,5 @@
 <template>
+<div class=" bg">
   <!-- Card -->
   <mdb-card class="mTop1">
     <mdb-card-body>
@@ -50,6 +51,7 @@
     </mdb-card-body>
   </mdb-card>
   <!-- Card -->
+</div>
 </template>
 <script>
   import { mdbInput, mdbBtn, mdbCard, mdbCardBody } from 'mdbvue';
@@ -169,6 +171,22 @@ var murl=this.$store.state.mUrl;
 
 
 <style>
+ .bg {
+   margin-top: -102px;
+    padding-top: 100px;
+    padding-bottom: 100px;
+    /* The image used */
+    background-image: url("../../assets/img/curved-images/curved.jpg");
+    /* background-image: url("../assets/img/3.jpg"); */
+
+    /* Full height */
+    height: 100%;
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
     .card {
         max-width: 400px;
         width:80%;
