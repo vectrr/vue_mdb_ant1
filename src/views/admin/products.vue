@@ -31,6 +31,7 @@
       <!-- <a-layout-header :style="{ background: '#fff', padding: 0 }" /> -->
       <a-layout-content :style="{ margin: '54px 16px 0' }">
         <div :style="{ padding: '24px', background: '#fff', minHeight: '360px' }">
+           <mOto  />
            <mUpload  />
         </div>
       </a-layout-content>
@@ -98,6 +99,7 @@
 
 <script>
 
+import mOto from "./motocycles.vue"
 import mUpload from "./upload.vue"
   // import {  mdbCard, mdbCardBody,  } from 'mdbvue';
   
@@ -114,6 +116,7 @@ const axios = require('axios');
   export default {
       components: {
         mUpload,
+        mOto
         // UploadImages,
         // mdbCard,
         // mdbCardBody,
