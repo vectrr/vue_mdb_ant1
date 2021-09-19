@@ -27,6 +27,26 @@
             <a-icon type="inbox" />
             <span>Upload</span>
         </a-menu-item>
+
+        <a-sub-menu key="sub1">
+        <span slot="title"><a-icon type="car" /><span>Motocycle</span></span>
+        <a-menu-item key="5">
+         Upload
+        </a-menu-item>
+        <a-menu-item key="6">
+         View
+        </a-menu-item>
+      </a-sub-menu>
+
+        <a-sub-menu key="sub2">
+        <span slot="title"><a-icon type="tool" /><span>Spare parts</span></span>
+        <a-menu-item key="5">
+         Upload
+        </a-menu-item>
+        <a-menu-item key="6">
+         View
+        </a-menu-item>
+      </a-sub-menu>
     
         </a-menu>
     </div>
@@ -142,6 +162,7 @@ const axios = require('axios');
         UploadImages,
         mdbCard,
         mdbCardBody,
+        // mdbIcon,
         // mdbDatatable2 
       },
     name: 'Products',
