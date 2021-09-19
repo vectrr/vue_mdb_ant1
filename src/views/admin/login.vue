@@ -1,5 +1,5 @@
 <template>
-<div class=" bg">
+<div class=" bgz">
   <!-- Card -->
   <mdb-card class="mTop1">
     <mdb-card-body>
@@ -171,7 +171,7 @@ var murl=this.$store.state.mUrl;
 
 
 <style>
- .bg {
+ .bgz {
    margin-top: -102px;
     padding-top: 100px;
     padding-bottom: 100px;
