@@ -188,6 +188,9 @@ this.post.price= formatter.format(2500);
 }
 </script>
 <style scoped>
+.card{
+  width: 100%;
+}
 .ms{
       box-shadow: 0 5px 11px 0 rgb(0 0 0 / 18%), 0 4px 15px 0 rgb(0 0 0 / 15%);
     /* margin-left: -22px;

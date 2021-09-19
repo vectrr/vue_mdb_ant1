@@ -6,6 +6,7 @@ import Main from './views/mainContent.vue'
 import Admin from './views/admin/login.vue'
 import Products from './views/admin/products.vue'
 import Motocycles from './views/products/motocycles.vue'
+import Motocycles1 from './views/admin/motocycles.vue'
 
 Vue.use(Router)
 
@@ -31,6 +32,11 @@ export default new Router({
       path: '/motocycles',
       name: 'Motocycles',
       component: Motocycles
+    },
+    {
+      path: '/delete',
+      name: 'Motocycles',
+      component: Motocycles1
     },
     // {
     //   path:  '/post/:postId/:postName/:postOccupation/:postEmail/:postBio/edit',
