@@ -56,10 +56,26 @@ require_once 'cors.php';
       
       $qa="SELECT * FROM products ";
       $qa1=mysqli_query($conn,$qa);
-      $mData=array();
+      // $mData=array();
+      // $mDataI=array();
+      $mOb=[];
+      $x=0;
+     
       while($row=@mysqli_fetch_assoc($qa1)){
-        $mData []=$row;
-        $mid=$row["pid"];
+        // $mData[$x]=$row;
+        $img=$row["img"];
+        $mOb[$x]["pro"]=$row;
+        $qb="SELECT * FROM images where mid='".$img."'";
+        $qb1=mysqli_query($conn,$qb);
+        $x1=0;
+        while($row1=@mysqli_fetch_assoc($qb1)){
+          
+          // $mData[$x][$x1]=$row1;
+          $mOb[$x]["im"][$x1]=$row1;
+          $x1=$x1+1;
+        }
+        // $mData[]["img"]=$mDataI[];
+        $x=$x+1;
 		}
         if(@mysqli_num_rows($qa1)>0){	             
           $response['error'] = false;   
@@ -68,7 +84,7 @@ require_once 'cors.php';
           // $response['id'] = $id;   
           // $response['name'] = $name;	
             
-          $response['data'] = $mData;
+          $response['data'] = $mOb;
         }else{
           $response['error'] = false;   
           $response['message'] = 0;

@@ -1,7 +1,9 @@
 <template>
   <div class="mTop">
-    <div style="width: 256px">
+    <div style="width: 100%">
     <a-affix :offset-top="top">
+      <div style="background-color:#001529;height:63px;margin-top:-50px;" ></div>
+       <md-progress-bar md-mode="indeterminate" v-if="sending" />
          <div style="width: 256px">
         <a-button type="primary" style="margin-bottom: 16px"  @click="toggleCollapsed">
         <a-icon :type="collapsed ? 'menu-unfold' : 'menu-fold'" />
@@ -30,10 +32,14 @@
     </div>
  </a-affix>
    </div>
-  <mdb-card style="width:99%;max-width:1400px;margin-top:30%;" >
+   
+  <mdb-card style="width:99%;max-width:1200px;margin-bottom:3%;padding:0px;margin-top" >
     <mdb-card-body>
-          <mdb-datatable-2 striped bordered small hover responsive fixedHeader
-      arrows maxHeight="400px" v-model="data" />
+  <mdb-card style="width:99%;max-width:1400px;margin-top:3%;" >
+    <mdb-card-body>
+          <!-- <mdb-datatable-2 striped bordered small hover responsive fixedHeader
+      arrows maxHeight="400px" v-model="data" /> -->
+      
     <form novalidate style="
     margin-left: auto;
     margin-right: auto;
@@ -50,8 +56,8 @@
                 <label for="gender">Category</label>
                 <md-select name="gender" id="gender" v-model="form.gender" md-dense :disabled="sending">
                   <md-option></md-option>
-                  <md-option value="M">Motocycle</md-option>
-                  <md-option value="F">Spareparts</md-option>
+                  <md-option value="Motocycle">Motocycle</md-option>
+                  <md-option value="Spareparts">Spareparts</md-option>
                 </md-select>
                 <span class="md-error">Product type is required</span>
               </md-field>
@@ -99,7 +105,7 @@
           </md-field>
         </md-card-content>
 
-        <md-progress-bar md-mode="indeterminate" v-if="sending" />
+       
 
         <md-card-actions>
           <md-button type="submit" class="md-primary" :disabled="sending">Create user</md-button>
@@ -112,11 +118,13 @@
     
     </mdb-card-body>
   </mdb-card>
+    </mdb-card-body>
+  </mdb-card>
   </div>
 </template>
 
 <script>
-  import {  mdbCard, mdbCardBody,mdbDatatable2  } from 'mdbvue';
+  import {  mdbCard, mdbCardBody,  } from 'mdbvue';
   
  import UploadImages from "vue-upload-drop-images"
   import { validationMixin } from 'vuelidate';
@@ -133,12 +141,12 @@ const axios = require('axios');
         UploadImages,
         mdbCard,
         mdbCardBody,
-        mdbDatatable2 
+        // mdbDatatable2 
       },
     name: 'Products',
     mixins: [validationMixin],
     data: () => ({
-      top: 70,
+      top: 50,
         collapsed: true,
        data: {
           
@@ -732,7 +740,7 @@ const axios = require('axios');
         console.log(pair[0]+', '+pair[1]);
       }
       
-axios({
+      axios({
           method: 'POST',
           // url: 'http://localhost/nw/vap/regApi.php?apicall=signup'
           url: murl+'api.php?apicall=a_up',

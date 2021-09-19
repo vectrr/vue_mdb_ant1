@@ -1,6 +1,6 @@
 <template>
    
-<div data-v-320224c2="" data-v-40b8d964="" class="row" data-v-35ea163e="" style="" id="div2">
+<div data-v-320224c2="" data-v-40b8d964="" class="row" data-v-35ea163e="" style="padding-left:1px;padding-right:1px;" id="div2">
 
     <item v-for="(post, index) in posts" :key="index" :post="post" />
     

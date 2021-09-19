@@ -69,18 +69,20 @@ axios({
       .then((response) => {
          const results = response.data
          const myData = response.data.data
-        // console.log("response: "+response);
+        // console.log("response: "+JSON.stringify(response));
         console.log("response1: "+ JSON.stringify(myData));
         
         if(results.val==2){
           console.log(myData)
             this.products = myData.map(post => ({
             
-          id: post.pid,
-          name: post.name,
-          images: post.img,
-          description: post.description,
-          type: post.type,
+          id: post.pro.pid,
+          name: post.pro.name,
+          images: post.pro.img,
+          description: post.pro.description,
+          type: post.pro.type,
+          price: post.pro.price,
+          im: post.im
           // created_at: post.name,
           // updated_at: post.name
          
