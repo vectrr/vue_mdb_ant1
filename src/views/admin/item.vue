@@ -58,7 +58,7 @@
 			<!-- <mdb-card-footer class="text-muted mt-4">2 days ago</mdb-card-footer> -->
 		</mdb-card-body>
     
-       <router-link :to="'/post/' + post.id+ '/'+post.name + '/'+post.occupation+ '/' +post.email+ '/' +post.bio + '/edit'" class="float-center" style="margin-left: auto;margin-right: auto;"><mdb-btn  color="primary" rounded>Buy</mdb-btn></router-link>
+       <router-link :to="'/post/' + post.id+ '/'+post.name + '/'+post.occupation+ '/' +post.email+ '/' +post.bio + '/edit'" class="float-center" style="margin-left: auto;margin-right: auto;"><mdb-btn  color="primary" rounded>Delete</mdb-btn></router-link>
 	</mdb-card>
  <!-- <mdb-card>
     <mdb-card-image src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%286%29.jpg" alt="Card image cap"></mdb-card-image>
