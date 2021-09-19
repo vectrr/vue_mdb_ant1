@@ -57,40 +57,12 @@
 			<!-- <mdb-card-title></mdb-card-title> -->
 			<!-- <mdb-card-footer class="text-muted mt-4">2 days ago</mdb-card-footer> -->
 		</mdb-card-body>
-    
-       <router-link :to="'/post/' + post.id+ '/'+post.name + '/'+post.occupation+ '/' +post.email+ '/' +post.bio + '/edit'" class="float-center" style="margin-left: auto;margin-right: auto;"><mdb-btn  color="primary" rounded>Delete</mdb-btn></router-link>
+<!--     
+       <router-link :to="'/post/' + post.id+ '/'+post.name + '/'+post.occupation+ '/' +post.email+ '/' +post.bio + '/edit'" class="float-center" style="margin-left: auto;margin-right: auto;"><mdb-btn  color="primary" rounded>Delete</mdb-btn></router-link> -->
+       
+       <div class="float-center" style="margin-left: auto;margin-right: auto;" @click="reload"><mdb-btn  color="danger" rounded>Delete</mdb-btn></div>
 	</mdb-card>
- <!-- <mdb-card>
-    <mdb-card-image src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%286%29.jpg" alt="Card image cap"></mdb-card-image>
-    <mdb-card-body>
-      <mdb-card-title>Basic card</mdb-card-title>
-      <mdb-card-text>Some quick example text to build on the card title and make up the bulk of the card's content.</mdb-card-text>
-      <mdb-btn color="primary">Button</mdb-btn>
-    </mdb-card-body>
-  </mdb-card> -->
-            <!-- <mdb-card v-animateOnScroll="{animation: 'fadeInLeft', delay: 30}">
-              <mdb-card-body>
-                <mdb-card-title>
-                  <strong> {{ post.name }}</strong>
-                  </mdb-card-title>
-                <mdb-card-text>
-                  
-                    <p style="float:left">description: </p>
-                    <h5 data-v-4e623858="" data-v-40b8d964="" class="card-text" data-v-9645230c=""  v-if="post.description !== null">{{ post.description }}</h5>
-                    <br/>
-                    <p style="float:left">Email: </p>
-                    <h5 data-v-4e623858="" data-v-40b8d964="" class="card-text" data-v-9645230c="">{{ post.email }}</h5>
-                    <br/>
-                    <p style="float:left">Bio: </p>
-                    <h5 data-v-4e623858="" data-v-40b8d964="" class="card-text" data-v-9645230c="">{{ post.bio }}</h5>
-                    
-                </mdb-card-text>
-                <router-link :to="'/post/' + post.id+ '/'+post.name + '/'+post.occupation+ '/' +post.email+ '/' +post.bio + '/edit'" class="float-right"><mdb-btn color="elegant">CLick to Edit</mdb-btn></router-link>
-              </mdb-card-body>
-            </mdb-card> -->
-     
-    
-
+  
         </div>
 </template>
 
@@ -98,6 +70,7 @@
 import {   mdbCard, mdbCardBody,mdbView,mdbMask, animateOnScroll, mdbBtn} from 'mdbvue';
       
 // import { slider, slideritem } from 'vue-concise-slider'
+ const axios = require('axios');
 export default {
    name: 'HomePage',
   components: {
@@ -125,6 +98,8 @@ export default {
   data() {
   return {
     isBold: false,
+    mId:0,
+    id:0,
      murl:this.$store.state.mUrl,
      sm1:[],
     someList:[
@@ -177,7 +152,42 @@ var formatter = new Intl.NumberFormat('en-US', {
 
 console.log(formatter.format(2500))
 this.post.price= formatter.format(2500);
-}
+},
+ reload(){
+   this.$parent.loading();
+   
+   this.id=this.post.id;
+   this.mId=this.post.img;
+    const article = { 
+    id:this.id,
+    // mid:this.mId
+ };
+      console.log("item_reload"+this.id);
+var murl=this.$store.state.mUrl;
+   axios({
+          method: 'POST',
+          // url: 'http://localhost/nw/vap/regApi.php?apicall=signup'
+          url: murl+'api.php?apicall=del_m',
+          data: article,
+          config: { headers: {'Content-Type': 'multipart/form-data' }}
+      })
+      .then((response) => {
+        // console.log("response: "+response);
+        console.log("response1: "+ JSON.stringify(response.data));
+        // console.log("response2: "+response.data);
+          if(response.data.val==22 & !response.data.error){
+            this.$parent.reload();
+              console.log("item_deleted"+this.id);
+          }
+        this.$parent.done();
+      })
+      .catch(function (response) {
+          //handle error
+          console.log("error"+response)
+      });
+       
+
+    }
   },
   mounted() {
     // this.fetchNews()

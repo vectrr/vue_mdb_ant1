@@ -9,7 +9,7 @@
         <mdb-row>
           <mdb-col md="10" class="mx-auto white z-depth-1 py-2 px-2">
             <mdb-card-body>
-              <h2 class="pb-4"><strong>Home page</strong></h2>
+              <h2 class="pb-4"><strong>Motocycles</strong></h2>
               
            
             </mdb-card-body>

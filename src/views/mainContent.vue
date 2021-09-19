@@ -18,7 +18,8 @@
            
             <h1 class="text-white pt-3 mt-n5" >15Minutes Logistics</h1>
             <p class="lead text-white mt-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.  </p>
-            <mdb-btn outline="white" rounded color="white" ><mdb-icon icon="home"/> Explore</mdb-btn>
+            <mdb-nav-item  to="/motocycles" active>
+            <mdb-btn outline="white" rounded color="white" ><mdb-icon icon="home"/> Explore</mdb-btn></mdb-nav-item>
           </div>
         </div>
       </div>
@@ -63,10 +64,11 @@
   </div>
 </template>
 <script>
-  import { mdbBtn,  } from 'mdbvue';
+  import { mdbBtn, mdbNavItem } from 'mdbvue';
   export default {
     name: 'AppPage',
     components: {
+      mdbNavItem,
       // mdbContainer,
       // mdbRow,
       // mdbCol,

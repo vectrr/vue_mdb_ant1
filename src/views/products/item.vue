@@ -175,8 +175,8 @@ var formatter = new Intl.NumberFormat('en-US', {
   //maximumFractionDigits: 0, // (causes 2500.99 to be printed as $2,501)
 });
 
-console.log(formatter.format(2500))
-this.post.price= formatter.format(2500);
+// console.log(formatter.format(2500))
+this.post.price= formatter.format(this.post.price);
 }
   },
   mounted() {

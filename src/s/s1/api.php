@@ -9,6 +9,39 @@ require_once 'cors.php';
 
     // if(isset($_GET['Regd_ID'])){  
     // switch($_GET['Regd_ID']){ 
+      case 'del_m':  
+        if($data){
+          // if(1==1){
+          // $data=array();
+          $id = $data['id'];
+          // $pasword = $data['pass'];
+          
+          $qb="DELETE FROM products WHERE pid='$id'";
+          $qb1=mysqli_query($conn,$qb);
+          $qa="SELECT * FROM admin  where pid='$id'";
+          
+        
+          sleep(3);
+          $qa1=mysqli_query($conn,$qa);
+            if($qa1){	             
+              $response['error'] = true;   
+              $response['message'] = "present";   
+              $response['val'] = 2;   
+              $response['id'] = $id;   	
+            }else{
+              $response['error'] = false;   
+              $response['message'] = "Deleted";
+              $response['val'] = 22;   
+              $response['id'] = $id;  
+              $response['data'] = $qa1;
+            }
+         
+       
+          } else{
+            $response['error'] = true;   
+            $response['message'] = 'required parameters are not available';
+          }
+        break;
 
   case 'admin_l':  
     if($data){
