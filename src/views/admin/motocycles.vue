@@ -52,7 +52,7 @@ export default {
     // Helper function for extracting a nested image object
    
     async fetchNews() {
-
+this.products=[];
         var murl=this.$store.state.mUrl;
        const mData = { 
     nm:"peter" ,

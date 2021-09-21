@@ -1,7 +1,7 @@
 <template>
   <Layout>
     <div style="margin-top: -15px; overflow-x: ;">
-       <mdb-edge-header color="teal darken-2">
+       <mdb-edge-header color="" style="background-color: #080e35 ">
         <div class="home-page-background"></div>
       </mdb-edge-header>
            

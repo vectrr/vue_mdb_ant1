@@ -25,6 +25,6 @@ export default {
 
 <style>
 #div2{
-width: 100%; max-width: 1200px; padding: 22px;margin-top: 20px; margin-right: auto; margin-left: auto;  box-shadow: 0px 8px 22px #00000036;
+width: 100%; max-width: 1100px; padding: 22px;margin-top: 20px; margin-right: auto; margin-left: auto;  box-shadow: 0px 8px 22px #00000036;
 }
 </style>
