@@ -20,7 +20,7 @@
         <router-view></router-view>
       </transition>
     </main>
-    <mdb-footer v-if="$store.state.docs" color="stylish-color">
+    <div v-if="$store.state.docs" color="stylish-color">
       <p class="footer-copyright mb-0 py-3 text-center">
         &copy; {{ new Date().getFullYear() }} Copyright:
         <a
@@ -28,7 +28,7 @@
           >15 Minutes</a
         >
       </p>
-    </mdb-footer>
+    </div>
     </div>
 </template>
 <script>
