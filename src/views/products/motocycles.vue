@@ -46,6 +46,7 @@ export default {
   data() {
     return {
       products: [],
+      sending: false,
     }
   },
   methods: {
