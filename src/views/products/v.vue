@@ -1,73 +1,7 @@
 <template>
 <div data-v-5e2edc68="" data-v-40b8d964="" class="mb-5 col-md-6" data-v-320224c2="" v-if="post.name">
 
-  <mdb-modal  size="lg" :show="modal" @close="modal = false" class="ms2">
-      <mdb-modal-header>
-        <mdb-modal-title>{{post.name }}</mdb-modal-title>
-      </mdb-modal-header>
-   
-        <slider ref="slider" :options="options">
-          <slideritem v-for="(item,index) in sm1" :key="index" > 
-            <div>
-                <img  :src="murl+item.loc" alt="Card image cap" />
-            </div>
-          </slideritem>
-          <div slot="loading">loading...</div>
-        </slider>
-          <!-- <a-carousel effect="slide" arrows id="ms2" class="ms2">
-            <div
-              slot="prevArrow"
-              class="custom-slick-arrow"
-              style="left: 10px;zIndex: 1"
-            >
-              <a-icon type="left-circle" />
-            </div>
-            <div slot="nextArrow"  class="custom-slick-arrow" style="right: 10px">
-              <a-icon type="right-circle" />
-            </div>
-          
-            <div  v-for="(item,index) in sm1" :key="index" style="height:10%"  >
-              <img  :src="murl+item.loc" alt="Card image cap" class="ms1"/>
-            </div>
-          </a-carousel> -->
-     
-      <mdb-modal-footer>
-        <mdb-btn color="danger" @click.native="modal = false">Close</mdb-btn>
-    
-      </mdb-modal-footer>
-    </mdb-modal>
-
- <a-drawer
-      title="Basic Drawer"
-      :placement="placement"
-      :closable="true"
-      :visible="visible"
-      :height='300'
-      @close="onClose"
-    >
-      <mdb-card-body class="text-center pb-0" cascade>
-        <p style="text-align: center;float:left"><b>{{post.name }}</b></p>
-        <p style="text-align: center;"><b>Price: </b> {{post.price }}</p>
-        <p>{{post.description}}</p>
-      </mdb-card-body>
-       
-       <div  style="margin-left: auto;margin-right: auto;">
-         <mdb-btn  color="danger" rounded style="float:left" @click="onClose">cancel</mdb-btn>
-       <mdb-btn  color="primary" rounded style="float:" @click="onClose">Add to cart</mdb-btn>
-       </div>
-    </a-drawer>
- <!-- <div style="width:100%;margin:20px auto;height:400px">
-
-      <slider ref="slider" :options="options">
-          
-          <slideritem v-for="(item,index) in someList" :key="index" :style="item.style"> 
-				<mdb-card-image :src="item.html" alt="Card image cap" ></mdb-card-image>
-            </slideritem>
-          
-          <div slot="loading">loading...</div>
-      </slider>
- </div> -->
-
+ 
 
      <mdb-card v-animateOnScroll="{animation: 'fadeInLeft', delay: 30}" wide>
 		<mdb-view hover cascade class="ms">
@@ -75,7 +9,7 @@
     <div
       slot="prevArrow"
       class="custom-slick-arrow"
-      style="left: 10px;zIndex: 1"
+      style="left: 10px;z-Index: 1"
     >
       <a-icon type="left-circle" />
     </div>
@@ -88,34 +22,22 @@
 				<mdb-mask flex-center waves overlay="white-slight"></mdb-mask>
     </div>
   </a-carousel>
-			<!-- <slider ref="slider" :options="options">
-         
-          <slideritem v-for="(item,index) in someList" :key="index" > 
-         <div>
-      <mdb-card-image  :src="item.html" alt="Card image cap" ></mdb-card-image>
-				<mdb-mask flex-center waves overlay="white-slight"></mdb-mask>
-    </div>
-            </slideritem>
-          
-          <div slot="loading">loading...</div>
-      </slider> -->
-       
-       
+		
 		</mdb-view>
 		<mdb-card-body class="text-center pb-0" cascade>
      
    <p style="text-align: center;float:left"><b>{{post.name }}</b></p>   
 <p style="text-align: center;"><b>Price: </b> {{post.price }}</p>
-        <!-- <h4><b>Description</b></h4> -->
         <p>{{post.description}}</p>
+   -muted mt-4">2 days ago</mdb-card-footer> -->
 		</mdb-card-body>
     
        <div  style="margin-left: auto;margin-right: auto;">
          <mdb-btn  color="primary" rounded style="float:left" @click.native="modal = true">preview</mdb-btn>
-       <mdb-btn  color="primary" rounded style="float:" @click="showDrawer">Purchase</mdb-btn>
+       <mdb-btn  color="primary" rounded style="float:">Purchase</mdb-btn>
        </div>
 	</mdb-card>
-
+ 
         </div>
 </template>
 
@@ -158,8 +80,6 @@ mdbModal,
   },
   data() {
   return {
-     visible: false,
-      placement: 'bottom',
     modal: false,
     isBold: false,
      murl:this.$store.state.mUrl,
@@ -201,12 +121,6 @@ mdbModal,
   }
 },
   methods: {
-    showDrawer() {
-      this.visible = true;
-    },
-    onClose() {
-      this.visible = false;
-    },
  currency(){
   // Create our number formatter.
 var formatter = new Intl.NumberFormat('en-US', {
