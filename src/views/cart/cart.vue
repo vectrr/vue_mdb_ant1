@@ -75,7 +75,9 @@ export default {
   },
   methods: {
      add2cart(){
-      console.log("mtocycles");
+      console.log("cart");
+       this.products=[];
+      this.fetchNews();
       this.$parent.add2cart();
     },
     // Helper function for extracting a nested image object

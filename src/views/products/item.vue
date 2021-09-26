@@ -118,6 +118,8 @@
        </div>
 	</mdb-card>
 
+
+      <md-snackbar :md-active.sync="userSaved">{{ sMsg }}</md-snackbar>
         </div>
 </template>
 
@@ -160,6 +162,8 @@ mdbModal,
   },
   data() {
   return {
+    sMsg:"",
+    userSaved:false,
      visible: false,
       placement: 'bottom',
     modal: false,
@@ -210,18 +214,43 @@ mdbModal,
       this.visible = false;
     },
     add2cart(){
-      var mp=[];
+      var mCarray=[];
       if(this.$cookies.isKey("mp")){
           // mp=this.$cookies.get("mp");
-          var mCarray=JSON.parse(this.$cookies.get("mp"))
+          
+           mCarray=JSON.parse(this.$cookies.get("mp"))
+          if(mCarray.length>1){
+
+        
           mCarray.forEach(element => {
-            
-           mp.push(element);
+            this.sMsg=element+"This item already exist" ;
+            if(mCarray.includes(this.post.id)){
+              
+              this.userSaved=true;
+            }else{
+              mCarray.push(this.post.id);
+              // this.userSaved=true;
+            }
+            // mCarray.indexOf(this.post.id) === -1 ? mCarray.push(this.post.id) : this.userSaved=true;
+
+          //  mp.push(element);
           });
+            }else{
+                console.log("ff");
+                
+         mCarray.push(this.post.id);
+              // this.userSaved=true;
+            }
+         
+      }else{
+        
+console.log(this.post.id)
+         mCarray.push(this.post.id);
+              // this.userSaved=true;
       }
     
-      mp.push(this.post.id);
-      var mp1= JSON.stringify(mp);
+      // mp.push(this.post.id);
+      var mp1= JSON.stringify(mCarray);
       console.log(mp1);
       this.$cookies.set("mp",mp1,"22min");
       this.visible = false;
