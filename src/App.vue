@@ -12,7 +12,14 @@
         <mdb-nav-item to="/motocycles">Motocycles</mdb-nav-item>
         <mdb-nav-item href="#">About us</mdb-nav-item>
         <mdb-nav-item  to="/admin">Admin</mdb-nav-item>
+        
       </mdb-navbar-nav>
+      <mdb-navbar-nav right>  
+       
+         <mdb-nav-item  to="/cart" style="float:right;">{{cItems}} <mdb-icon  to="/cart" fab icon="opencart" style="color:white" /></mdb-nav-item>
+      </mdb-navbar-nav>
+    
+       
     </mdb-navbar-toggler>
   </mdb-navbar>
    <main :style="{ marginTop: $store.state.docs ? '0px' : '0px' }">
@@ -33,7 +40,7 @@
     </div>
 </template>
 <script>
-  import { mdbNavbar, mdbNavbarBrand, mdbNavbarToggler, mdbNavbarNav, mdbNavItem,  } from 'mdbvue';
+  import { mdbNavbar, mdbNavbarBrand, mdbNavbarToggler, mdbNavbarNav, mdbNavItem, mdbIcon } from 'mdbvue';
   
 import { isMobile } from 'mobile-device-detect';
   // alert(this.mib);
@@ -42,6 +49,7 @@ import { isMobile } from 'mobile-device-detect';
       props: ['isMobilez'],
        data() {
           return {
+            cItems:0,
             mib:isMobile,
             // email:this.postEmail,
             msg:""
@@ -53,11 +61,20 @@ import { isMobile } from 'mobile-device-detect';
       mdbNavbarToggler,
       mdbNavbarNav,
       mdbNavItem,
+      mdbIcon
       
       
      
     },
     methods: {
+      add2cart(){
+        if(this.$cookies.isKey("mp")){
+          var mCarray=JSON.parse(this.$cookies.get("mp"))
+          this.cItems=mCarray.length;      
+          }
+      console.log("app");
+      // this.$parent.add2cart();
+    },
       isMobile1() {
         if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
           return true
@@ -68,7 +85,10 @@ import { isMobile } from 'mobile-device-detect';
       isMobile() {
         return isMobile
       }
-    }
+    },
+      mounted() {
+    this.add2cart();
+  },
   }
 </script>
 <style>

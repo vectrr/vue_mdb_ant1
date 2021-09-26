@@ -43,43 +43,97 @@ require_once 'cors.php';
           }
         break;
 
-  case 'admin_l':  
-    if($data){
-      // if(1==1){
-      // $data=array();
-      $email = $data['email'];
-      $pasword = $data['pass'];
-      
-      $qa="SELECT * FROM admin  where email='$email' and password='$pasword'";
-     
-      
-      $qa1=mysqli_query($conn,$qa);
-      $id=0;
-      while($row=@mysqli_fetch_assoc($qa1)){
-        $id=$row["aid"];
-        $name=$row["name"];
-      }
-        if(@mysqli_num_rows($qa1)>0){	             
-          $response['error'] = false;   
-          $response['message'] = "ok";   
-          $response['val'] = 22;   
-          $response['id'] = $id;   
-          $response['name'] = $name;	
-        }else{
-          $response['error'] = false;   
-          $response['message'] = 0;
-          $response['val'] = 0;   
-          $response['id'] = $id;  
-          $response['data'] = $qa;
-        }
-     
-   
-      } else{
-        $response['error'] = true;   
-        $response['message'] = 'required parameters are not available';
-      }
-    break;
-    
+        case 'admin_l':  
+          if($data){
+            // if(1==1){
+            // $data=array();
+            $email = $data['email'];
+            $pasword = $data['pass'];
+            
+            $qa="SELECT * FROM admin  where email='$email' and password='$pasword'";
+           
+            
+            $qa1=mysqli_query($conn,$qa);
+            $id=0;
+            while($row=@mysqli_fetch_assoc($qa1)){
+              $id=$row["aid"];
+              $name=$row["name"];
+            }
+              if(@mysqli_num_rows($qa1)>0){	             
+                $response['error'] = false;   
+                $response['message'] = "ok";   
+                $response['val'] = 22;   
+                $response['id'] = $id;   
+                $response['name'] = $name;	
+              }else{
+                $response['error'] = false;   
+                $response['message'] = 0;
+                $response['val'] = 0;   
+                $response['id'] = $id;  
+                $response['data'] = $qa;
+              }
+           
+         
+            } else{
+              $response['error'] = true;   
+              $response['message'] = 'required parameters are not available';
+            }
+          break;
+          
+        case 'a_cart':  
+          if($data){
+            // if(1==1){
+            // $data=array();
+            $mc = $data['mc'];
+
+            $qa = 'SELECT *  FROM `products`  WHERE `pid` IN (' . implode(',', array_map('intval', $mc)) . ')';
+
+            // $qa="SELECT * FROM products ";
+            $qa1=mysqli_query($conn,$qa);
+            // $mData=array();
+            // $mDataI=array();
+            $mOb=[];
+            $x=0;
+           
+            while($row=@mysqli_fetch_assoc($qa1)){
+              // $mData[$x]=$row;
+              $img=$row["img"];
+              $mOb[$x]["pro"]=$row;
+              $qb="SELECT * FROM images where mid='".$img."'";
+              $qb1=mysqli_query($conn,$qb);
+              $x1=0;
+              while($row1=@mysqli_fetch_assoc($qb1)){
+                
+                // $mData[$x][$x1]=$row1;
+                $mOb[$x]["im"][$x1]=$row1;
+                $x1=$x1+1;
+              }
+              // $mData[]["img"]=$mDataI[];
+              $x=$x+1;
+          }
+              if(@mysqli_num_rows($qa1)>0){	             
+                $response['error'] = false;   
+                $response['message'] = "ok";   
+                $response['val'] = 2;   
+                // $response['id'] = $id;   
+                // $response['name'] = $name;	
+                  
+                $response['data'] = $mOb;
+              }else{
+                $response['error'] = true;   
+                $response['message'] = 0;
+                $response['val'] = 0;   
+                // $response['id'] = $id;  
+                $response['data'] = $qa;
+              }
+           
+         
+            } else{
+              $response['error'] = true;   
+              $response['message'] = 'required parameters are not available';
+            }
+          break;
+          
   case 'a_m':  
     if($data){
       // if(1==1){

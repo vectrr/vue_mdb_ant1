@@ -45,16 +45,18 @@
       :height='300'
       @close="onClose"
     >
-      <mdb-card-body class="text-center pb-0" cascade>
-        <p style="text-align: center;float:left"><b>{{post.name }}</b></p>
+      <mdb-card-body class="text-center pb-0" cascade style="margin-left: auto;margin-right: auto;max-width:500px;">
+        <div style="margin-left: auto;margin-right: auto;max-width:500px;">
+        <p style="text-align:center ;"><b>{{post.name }}</b></p>
         <p style="text-align: center;"><b>Price: </b> {{post.price }}</p>
-        <p>{{post.description}}</p>
-      </mdb-card-body>
+        <p style="text-align:center ;">{{post.description}}</p>
+     </div>
        
-       <div  style="margin-left: auto;margin-right: auto;">
+       <div  style="margin-left: auto;margin-right: auto;max-width:400px;">
          <mdb-btn  color="danger" rounded style="float:left" @click="onClose">cancel</mdb-btn>
-       <mdb-btn  color="primary" rounded style="float:" @click="onClose">Add to cart</mdb-btn>
+       <mdb-btn  color="primary" rounded style="float:right" @click="add2cart">Add to cart</mdb-btn>
        </div>
+      </mdb-card-body>
     </a-drawer>
  <!-- <div style="width:100%;margin:20px auto;height:400px">
 
@@ -206,6 +208,25 @@ mdbModal,
     },
     onClose() {
       this.visible = false;
+    },
+    add2cart(){
+      var mp=[];
+      if(this.$cookies.isKey("mp")){
+          // mp=this.$cookies.get("mp");
+          var mCarray=JSON.parse(this.$cookies.get("mp"))
+          mCarray.forEach(element => {
+            
+           mp.push(element);
+          });
+      }
+    
+      mp.push(this.post.id);
+      var mp1= JSON.stringify(mp);
+      console.log(mp1);
+      this.$cookies.set("mp",mp1,"22min");
+      this.visible = false;
+      this.$parent.add2cart();
+
     },
  currency(){
   // Create our number formatter.

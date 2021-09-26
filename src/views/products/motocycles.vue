@@ -9,11 +9,29 @@
     <mdb-container class="free-bird">
         <mdb-row>
           <mdb-col md="10" class="mx-auto white z-depth-1 py-2 px-2">
-            <mdb-card-body>
-              <h2 class="pb-4"><strong>Motocycles</strong></h2>
-              
-           
-            </mdb-card-body>
+            
+          <h3  style="text-align: center;"><strong>Motocycles</strong></h3>
+          <a-affix :offset-top="top"  >
+            <div style="" class="mDiv">
+              <mdb-input label="Search" v-model="value"  />
+            </div>
+          </a-affix>
+
+        <!-- <a-affix :offset-top="top1" :style="{left: 200}">
+           <div style="" class="mDiv">
+          <a-layout-sider 
+            breakpoint="lg"
+            collapsed-width="0"
+            @collapse="onCollapse"
+            @breakpoint="onBreakpoint"
+          >
+         
+            <div class="mDiv logo" />
+            <mdb-input label="Search" v-model="value"  />
+       
+          </a-layout-sider>
+             </div>
+        </a-affix> -->
           </mdb-col>
         </mdb-row>
       </mdb-container>
@@ -27,7 +45,7 @@
 <script>
 import mlist from "./list.vue"
 import axios from "axios"
-import { mdbContainer, mdbCol, mdbRow,  mdbEdgeHeader,  mdbCardBody } from 'mdbvue';
+import { mdbContainer, mdbCol, mdbRow,  mdbEdgeHeader, mdbInput } from 'mdbvue';
 // import data from "./posts.json"
 
 export default {
@@ -39,20 +57,31 @@ export default {
     mdbCol,
     mdbRow,
     mdbEdgeHeader,
-    
-    mdbCardBody
+    mdbInput,
+    // mdbCardBody
   },
   
 
   data() {
     return {
+       top:30,
+       top1:50,
       products: [],
       sending: false,
     }
   },
   methods: {
+     add2cart(){
+      console.log("mtocycles");
+      this.$parent.add2cart();
+    },
     // Helper function for extracting a nested image object
-   
+   onCollapse(collapsed, type) {
+      console.log(collapsed, type);
+    },
+    onBreakpoint(broken) {
+      console.log(broken);
+    },
     async fetchNews() {
         this.sending=true;
         var murl=this.$store.state.mUrl;
@@ -133,3 +162,20 @@ axios({
 
 }
 </script>
+<style scoped>
+
+ .mDiv{
+    background-color: #fff;
+   padding-top: 3px;
+    padding-left: 3px;
+ }
+.md-form {
+  
+    /* border-radius: 30px; */
+    background-color: #fff;
+
+}
+.ant-affix{
+  box-shadow: 0 2px 5px 0 rgb(0 0 0 / 16%), 0 2px 10px 0 rgb(0 0 0 / 12%) ;
+}
+</style>
