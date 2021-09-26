@@ -231,9 +231,9 @@ mdbModal,
       }
     
       // mp.push(this.post.id);
-      // var mp1= JSON.stringify(mp);
+      var mp1= JSON.stringify(mCarray);
       // console.log(mp1);
-      this.$cookies.set("mp",mCarray,"22min");
+      this.$cookies.set("mp",mp1,"22min");
       this.visible = false;
       this.$parent.add2cart();
 
