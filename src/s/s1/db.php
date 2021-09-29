@@ -4,15 +4,15 @@
 	error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-		// $servername="localhost";
-		// $username="root1";
-		// $password="root1";
-		// $dbname="15minutes";
-		
 		$servername="localhost";
-		$username="kilaqitu_peter";
-		$password="kilaqitu_peter";
-		$dbname="kilaqitu_15minutes";
+		$username="root1";
+		$password="root1";
+		$dbname="15minutes";
+		
+		// $servername="localhost";
+		// $username="kilaqitu_peter";
+		// $password="kilaqitu_peter";
+		// $dbname="kilaqitu_15minutes";
 		
 		$img_url="http://192.168.0.101/nw/larsen/s/uploads/property/";
 		
