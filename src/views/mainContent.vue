@@ -18,6 +18,9 @@
            
             <h1 class="text-white pt-3 mt-n5" >15Minutes Logistics</h1>
             <p class="lead text-white mt-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.  </p>
+            <input class="form-control search_input dProperty" id="search" style="border-radius: 50px 50px;max-width: 400px;text-align:left;margin-left: auto;margin-right: auto;padding-left:32px;cursor:text; box-shadow:12px 12px 12px black;box-shadow: 1px 6px 14px 6px #09131596;" type="search" placeholder="Enter your desired location" aria-label="Search" >
+            
+
             <mdb-nav-item  to="/motocycles" active>
             <mdb-btn outline="white" rounded color="white" ><mdb-icon icon="home"/> Explore</mdb-btn></mdb-nav-item>
           </div>

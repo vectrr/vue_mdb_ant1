@@ -1,6 +1,6 @@
 <template>
 <div>
-  <mdb-navbar  v-bind:class = "isMobile()?'mNavc':'dNavc'"   color="info" position="top" dark transparent scrolling>
+  <mdb-navbar  v-bind:class = "isMobile()?'mNavc':'dNavc'"   color="info" position="top" dark transparent scrolling style="    background: linear-gradient(to bottom,#0000007a,#0000007a,#ffffff0f 100%);">
     <mdb-navbar-brand to="/"  href="../assets/img/hm.png">
            <img src="./assets/img/logo.png" alt=" logo" style="max-width:33px">
     15Minutes 
