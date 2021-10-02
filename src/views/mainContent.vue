@@ -14,15 +14,20 @@
      
          <div class="container">
         <div class="row">
-          <div class="col-lg-7 text-center mx-auto" style="margin-top:77px">
+          <div class="col-lg-8 text-center mx-auto" style="margin-top:87px">
            
-            <h1 class="text-white pt-3 mt-n5" >15Minutes Logistics</h1>
-            <p class="lead text-white mt-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.  </p>
+            <!-- <h1 class="text-white pt-3 mt-n5" >15Minutes Logistics</h1> -->
+
+             <h1 class="text-white pt-3 mt-n5" style=" font-weight: 900;font-size: 2p;color: #ffffff;
+    text-shadow: 1px 1px 2px #ff6d6d;" >15Minutes Logistics</h1>
+     
+            <p class="lead text-white mt-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit,   </p>
             <input class="form-control search_input dProperty" id="search" style="border-radius: 50px 50px;max-width: 400px;text-align:left;margin-left: auto;margin-right: auto;padding-left:32px;cursor:text; box-shadow:12px 12px 12px black;box-shadow: 1px 6px 14px 6px #09131596;" type="search" placeholder="Enter your desired location" aria-label="Search" >
             
+ <router-link to="/motocycles" > <mdb-btn style="margin-top: 42px;" outline="white" rounded color="white" ><mdb-icon icon="home"/> Explore</mdb-btn></router-link>
 
-            <mdb-nav-item  to="/motocycles" active>
-            <mdb-btn outline="white" rounded color="white" ><mdb-icon icon="home"/> Explore</mdb-btn></mdb-nav-item>
+            <!-- <mdb-nav-item  to="#/motocycles" style="padding:0px;max-width:142px;background-color:red;margin-left:auto;margin-right:auto;" active>
+            <mdb-btn outline="white" rounded color="white" ><mdb-icon icon="home"/> Explore</mdb-btn></mdb-nav-item> -->
           </div>
         </div>
       </div>
@@ -67,11 +72,11 @@
   </div>
 </template>
 <script>
-  import { mdbBtn, mdbNavItem } from 'mdbvue';
+  import { mdbBtn,} from 'mdbvue';
   export default {
     name: 'AppPage',
     components: {
-      mdbNavItem,
+      // mdbNavItem,
       // mdbContainer,
       // mdbRow,
       // mdbCol,

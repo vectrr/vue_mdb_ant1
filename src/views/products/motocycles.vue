@@ -12,9 +12,11 @@
             
           <h3  style="text-align: center;"><strong>Motocycles</strong></h3>
           <a-affix :offset-top="top"  >
-            <div style="" class="mDiv">
+            <!-- <div style="" class="mDiv">
               <mdb-input label="Search" v-model="value"  />
-            </div>
+            </div> -->
+            <input class="form-control search_input dProperty mDiv" id="search" style="border-radius: 50px 50px;max-width: 400px;text-align:left;margin-left: auto;margin-right: auto;padding-left:32px;cursor:text; box-shadow:12px 12px 12px black;box-shadow: 1px 6px 14px 6px #09131596;margin-bottom:33px" type="search" placeholder="Search motocycle" aria-label="Search"  v-on:keyup="keymonitor">
+                
           </a-affix>
 
         <!-- <a-affix :offset-top="top1" :style="{left: 200}">
@@ -45,7 +47,7 @@
 <script>
 import mlist from "./list.vue"
 import axios from "axios"
-import { mdbContainer, mdbCol, mdbRow,  mdbEdgeHeader, mdbInput } from 'mdbvue';
+import { mdbContainer, mdbCol, mdbRow,  mdbEdgeHeader,  } from 'mdbvue';
 // import data from "./posts.json"
 
 export default {
@@ -57,20 +59,55 @@ export default {
     mdbCol,
     mdbRow,
     mdbEdgeHeader,
-    mdbInput,
+    // mdbInput,
     // mdbCardBody
   },
   
 
   data() {
     return {
-       top:30,
+       top:50,
        top1:50,
       products: [],
       sending: false,
     }
   },
   methods: {
+     keymonitor: function(event) {
+        console.log(event.target.value);
+        
+        this.sending=true;
+        var murl=this.$store.state.mUrl;
+    const mData = { 
+              search:event.target.value ,
+              };
+    axios({
+          method: 'POST',
+          // url: 'http://localhost/nw/vap/regApi.php?apicall=signup'
+          url: murl+'api.php?apicall=a_search',
+          data: mData,
+          config: { headers: {'Content-Type': 'multipart/form-data' }}
+      })
+      .then((response) => {
+         const results = response.data
+         const myData = response.data.data
+        // console.log("response: "+JSON.stringify(response));
+        console.log("response1: "+ JSON.stringify(myData));
+        
+        if(results.val==2){
+          console.log(myData)
+           
+        }
+       this.sending=false;
+
+      })
+      .catch(function (response) {
+        this.sending=false;
+          //handle error
+          console.log("error"+response)
+      });
+
+    },
      add2cart(){
       console.log("mtocycles");
      
