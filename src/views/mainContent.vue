@@ -19,11 +19,28 @@
             <!-- <h1 class="text-white pt-3 mt-n5" >15Minutes Logistics</h1> -->
 
              <h1 class="text-white pt-3 mt-n5" style=" font-weight: 900;font-size: 2p;color: #ffffff;
-    text-shadow: 1px 1px 2px #ff6d6d;" >15Minutes Logistics</h1>
+    text-shadow: #cb6dff 1px 1px 2px;;" >15Minutes Logistics</h1>
      
-            <p class="lead text-white mt-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit,   </p>
-            <input class="form-control search_input dProperty" id="search" style="border-radius: 50px 50px;max-width: 400px;text-align:left;margin-left: auto;margin-right: auto;padding-left:32px;cursor:text; box-shadow:12px 12px 12px black;box-shadow: 1px 6px 14px 6px #09131596;" type="search" placeholder="Enter your desired location" aria-label="Search" >
-            
+            <p class="lead text-white mt-3" style="font-weight: 700;">For all of you Motocycle needs  </p>
+            <input class="form-control search_input dProperty" id="search" style="border-radius: 50px 50px;max-width: 400px;text-align:left;margin-left: auto;margin-right: auto;padding-left:32px;cursor:text; box-shadow:12px 12px 12px black;box-shadow: 1px 6px 14px 6px #09131596;" type="search" placeholder="Enter your desired location" aria-label="Search" v-on:keyup="keymonitor" >
+            <mdb-list-group v-if="dList">
+            <div style="margin-top: 1px;box-shadow: rgb(9 19 21 / 59%) 1px 6px 14px 6px;max-width: 410px;
+            margin-left: auto;
+            margin-right: auto;
+            width: 80%;">
+            <mdb-list-group-item  :action="true"  v-for="(item,index) in mItems" :key="index"   ><div @click="mSearchitem(item.name)">{{item.name}}</div ></mdb-list-group-item>
+            </div>
+          </mdb-list-group>   
+
+          <mdb-list-group v-if="cRequest">
+            <div style="margin-top:1px;box-shadow: rgb(9 19 21 / 59%) 1px 6px 14px 6px;max-width: 410px;
+            margin-left: auto;
+            margin-right: auto;
+            width: 80%;">
+            <mdb-list-group-item  :action="true" href="#" tag="a">Make request for this product?</mdb-list-group-item>
+            </div>
+          </mdb-list-group>
+
  <router-link to="/motocycles" > <mdb-btn style="margin-top: 42px;" outline="white" rounded color="white" ><mdb-icon icon="home"/> Explore</mdb-btn></router-link>
 
             <!-- <mdb-nav-item  to="#/motocycles" style="padding:0px;max-width:142px;background-color:red;margin-left:auto;margin-right:auto;" active>
@@ -72,20 +89,87 @@
   </div>
 </template>
 <script>
-  import { mdbBtn,} from 'mdbvue';
+  import { mdbBtn,mdbListGroup,mdbListGroupItem} from 'mdbvue';
+  import axios from "axios";
   export default {
     name: 'AppPage',
     components: {
-      // mdbNavItem,
-      // mdbContainer,
-      // mdbRow,
-      // mdbCol,
      
-      
-      // mdbMask,
+      mdbListGroup,
+      mdbListGroupItem,
       mdbBtn,
       
+    },
+      data() {
+    return {
+      mItems: [],
+      sending: false,
+      dList:false,
+      cRequest:false,
+    }
+  },
+    methods:{
+          keymonitor: function(event) {
+     
+        console.log(event.target.value);
+        if(event.target.value!= ""){
+
+        this.mSearch(event.target.value);
+        
+        }else{
+           this.mItems=[]; 
+           this.dList=false;
+        }
+    },
+     mSearch (s){
       
+        this.sending=true;
+        var murl=this.$store.state.mUrl;
+    const mData = { 
+              search:s ,
+              };
+    axios({
+          method: 'POST',
+          // url: 'http://localhost/nw/vap/regApi.php?apicall=signup'
+          url: murl+'api.php?apicall=a_search',
+          data: mData,
+          config: { headers: {'Content-Type': 'multipart/form-data' }}
+      })
+      .then((response) => {
+         const results = response.data
+         const myData = response.data.data
+        // console.log("response: "+JSON.stringify(response));
+        console.log("response1: "+ JSON.stringify(myData));
+        
+        if(results.val==2){
+           this.cRequest=false;
+          console.log(myData)
+           this.mItems = myData.map(post => ({
+             name:post.name
+           }))
+           
+           this.dList=true;
+        }else if(results.val==0){
+           
+           
+           this.dList=false;
+           this.cRequest=true;
+        }
+       this.sending=false;
+
+      })
+      .catch(function (response) {
+        this.sending=false;
+          //handle error
+          console.log("error"+response)
+      });
+
+    },
+    mSearchitem(s){
+      console.log(s);
+      this.dList=false;
+    }
+    
     }
   };
 </script>
