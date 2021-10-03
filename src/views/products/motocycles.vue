@@ -15,8 +15,10 @@
             <!-- <div style="" class="mDiv">
               <mdb-input label="Search" v-model="value"  />
             </div> -->
-            <input class="form-control search_input dProperty mDiv" id="search" style="border-radius: 50px 50px;max-width: 400px;text-align:left;margin-left: auto;margin-right: auto;padding-left:32px;cursor:text; box-shadow:12px 12px 12px black;box-shadow: 1px 6px 14px 6px #09131596;margin-bottom:33px" type="search" placeholder="Search motocycle" aria-label="Search"  v-on:keyup="keymonitor"/>
+            <input class="form-control search_input dProperty mDiv" id="search" style="float:left;border-radius: 50px 50px;max-width: 400px;text-align:left;margin-left: auto;margin-right: auto;padding-left:32px;cursor:text; box-shadow:12px 12px 12px black;box-shadow: 1px 6px 14px 6px #09131596;margin-bottom:33px" type="search" placeholder="Search motocycle" aria-label="Search"  v-on:keyup="keymonitor"/>
                 <!-- {{mItems}} -->
+                 <mdb-btn color="default">Refresh</mdb-btn>
+
                 <mdb-icon icon="sync-alt"  class="refresh-start"/>
            
 
@@ -70,7 +72,7 @@
 import mlist from "./list.vue"
 // import mylist from "./mList.vue"
 import axios from "axios"
-import { mdbContainer, mdbCol, mdbRow,  mdbEdgeHeader, mdbListGroup,mdbListGroupItem,mdbIcon } from 'mdbvue';
+import { mdbContainer, mdbCol, mdbRow,  mdbEdgeHeader, mdbListGroup,mdbListGroupItem,mdbIcon,mdbBtn } from 'mdbvue';
 // import data from "./posts.json"
 
 export default {
@@ -86,10 +88,12 @@ export default {
     mdbRow,
     mdbEdgeHeader,
     mdbIcon,
+    mdbBtn,
     // mdbInput,
     // mdbCardBody
   },
-  
+  props: ['name',],
+
 
   data() {
     return {
@@ -108,6 +112,7 @@ export default {
       console.log("refreshing...");
       this.list_key=this.list_key+1;
     },
+
      keymonitor: function(event) {
      
         console.log(event.target.value);
@@ -305,7 +310,14 @@ export default {
     },
   },
   mounted() {
+    if(this.name!="" && this.name!=undefined){
+      console.log("url ok="+this.name)
+      this.mSearchitem(this.name);
+    }else{
+      
     this.fetchNews()
+      console.log("url not ok")
+    }
   },
 
 }
@@ -332,8 +344,6 @@ from {transform: rotate(0deg)}
 to {transform: rotate(360deg)}
 
 }
-
-
 .refresh-start {
 
 animation-name: rotate;

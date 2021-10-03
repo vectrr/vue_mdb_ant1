@@ -44,6 +44,13 @@ export default new Router({
       name: 'Motocycles',
       component: Motocycles1
     },
+    
+    {
+      path:  '/post/:name/moto',
+      name: 'Motocycles',
+      component: Motocycles,
+      props: true
+    }
     // {
     //   path:  '/post/:postId/:postName/:postOccupation/:postEmail/:postBio/edit',
     //   component: Patch,

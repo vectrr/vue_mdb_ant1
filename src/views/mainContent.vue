@@ -22,13 +22,24 @@
     text-shadow: #cb6dff 1px 1px 2px;;" >15Minutes Logistics</h1>
      
             <p class="lead text-white mt-3" style="font-weight: 700;">For all of you Motocycle needs  </p>
-            <input class="form-control search_input dProperty" id="search" style="border-radius: 50px 50px;max-width: 400px;text-align:left;margin-left: auto;margin-right: auto;padding-left:32px;cursor:text; box-shadow:12px 12px 12px black;box-shadow: 1px 6px 14px 6px #09131596;" type="search" placeholder="Enter your desired location" aria-label="Search" v-on:keyup="keymonitor" >
+
+            <input autocomplete="off"  class="form-control search_input dProperty" id="search" style="border-radius: 50px 50px;max-width: 400px;text-align:left;margin-left: auto;margin-right: auto;padding-left:32px;cursor:text; box-shadow:12px 12px 12px black;box-shadow: 1px 6px 14px 6px #09131596;" type="search" placeholder="Enter your desired location" aria-label="Search" v-on:keyup="keymonitor" >
             <mdb-list-group v-if="dList">
             <div style="margin-top: 1px;box-shadow: rgb(9 19 21 / 59%) 1px 6px 14px 6px;max-width: 410px;
             margin-left: auto;
             margin-right: auto;
             width: 80%;">
-            <mdb-list-group-item  :action="true"  v-for="(item,index) in mItems" :key="index"   ><div @click="mSearchitem(item.name)">{{item.name}}</div ></mdb-list-group-item>
+            
+              <div   v-for="(item,index) in mItems" :key="index">
+                <router-link :to="'/post/' + item.name+ '/moto'" > 
+            <mdb-list-group-item  :action="true" >
+              
+                {{item.name}}
+           
+            </mdb-list-group-item>
+            
+            </router-link>
+             </div> 
             </div>
           </mdb-list-group>   
 
