@@ -242,7 +242,6 @@ require_once 'cors.php';
             // $data=array();
             // if(isset($search)&& $search!==" "&& $search!=="")
             $search = $data['search'];
-
             $qa = "SELECT * FROM products WHERE description like '%$search%' and type='Spareparts' or name LIKE '%$search%'and type='Spareparts'";
 
             // $qa="SELECT * FROM products ";
