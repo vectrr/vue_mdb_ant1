@@ -188,14 +188,14 @@ export default {
     axios({
           method: 'POST',
           // url: 'http://localhost/nw/vap/regApi.php?apicall=signup'
-          url: murl+'api.php?apicall=a_search',
+          url: murl+'api.php?apicall=a_search_moto',
           data: mData,
           config: { headers: {'Content-Type': 'multipart/form-data' }}
       })
       .then((response) => {
          const results = response.data
          const myData = response.data.data
-        // console.log("response: "+JSON.stringify(response));
+        console.log("response: "+JSON.stringify(response));
         console.log("response1: "+ JSON.stringify(myData));
         
         if(results.val==2){
@@ -246,7 +246,7 @@ export default {
       axios({
           method: 'POST',
           // url: 'http://localhost/nw/vap/regApi.php?apicall=signup'
-          url: murl+'api.php?apicall=a_m',
+          url: murl+'api.php?apicall=a_moto',
           data: mData,
           config: { headers: {'Content-Type': 'multipart/form-data' }}
       })

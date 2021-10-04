@@ -6,6 +6,7 @@ import Main from './views/mainContent.vue'
 import Admin from './views/admin/login.vue'
 import Products from './views/admin/products.vue'
 import Motocycles from './views/products/motocycles.vue'
+import Spareparts from './views/products/spareparts.vue'
 import Cart from './views/cart/cart.vue'
 import Motocycles1 from './views/admin/motocycles.vue'
 
@@ -38,6 +39,11 @@ export default new Router({
       path: '/motocycles',
       name: 'Motocycles',
       component: Motocycles
+    },
+    {
+      path: '/spareparts',
+      name: 'Spareparts',
+      component: Spareparts
     },
     {
       path: '/delete',

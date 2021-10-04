@@ -32,6 +32,7 @@
       <a-layout-content :style="{ margin: '54px 16px 0' }">
         <div :style="{ padding: '24px', background: '#fff', minHeight: '360px' }">
            <mOto     v-if="mProduct === 1"/>
+           <mSpare v-if="mProduct === 2" />
            <mUpload v-if="mProduct === 3" />
         </div>
       </a-layout-content>
@@ -100,6 +101,7 @@
 <script>
 
 import mOto from "./motocycles.vue"
+import mSpare from "./spareparts.vue"
 import mUpload from "./upload.vue"
   // import {  mdbCard, mdbCardBody,  } from 'mdbvue';
   
@@ -116,7 +118,8 @@ const axios = require('axios');
   export default {
       components: {
         mUpload,
-        mOto
+        mOto,
+        mSpare,
         // UploadImages,
         // mdbCard,
         // mdbCardBody,

@@ -134,14 +134,64 @@ require_once 'cors.php';
             }
           break;
           
-        case 'a_search':  
+          case 'a_search':  
+            if($data){
+              // if(1==1){
+              // $data=array();
+              // if(isset($search)&& $search!==" "&& $search!=="")
+              $search = $data['search'];
+  
+              $qa = "SELECT * FROM products WHERE description like '%$search%' or name LIKE '%$search%' ";
+  
+              // $qa="SELECT * FROM products ";
+              $qa1=mysqli_query($conn,$qa);
+              $mData=array();
+           
+              // $mDataI=array();
+           
+              $x=0;
+              if(@mysqli_num_rows($qa1)>0){	
+                $row=@mysqli_fetch_assoc($qa1); 
+                array_push($mData,$row);
+              while($row=@mysqli_fetch_assoc($qa1)){
+               
+                array_push($mData,$row);
+                // $mData[$x]=$row;
+                // $name=$row["name"];
+                // $description=$row["description"];
+  
+            }
+            $response['error'] = false;   
+            $response['message'] = "ok";   
+            $response['val'] = 2;   
+            // $response['id'] = $id;   
+            // $response['name'] = $name;	
+              
+            $response['data'] =$mData;
+  
+          }else{
+                  $response['error'] = true;   
+                  $response['message'] = 0;
+                  $response['val'] = 0;   
+                  // $response['id'] = $id;  
+                  $response['data'] ="not present";
+                }
+             
+           
+              } else{
+                $response['error'] = true;   
+                $response['message'] = 'required parameters are not available';
+              }
+            break;
+            
+        case 'a_search_moto':  
           if($data){
             // if(1==1){
             // $data=array();
             // if(isset($search)&& $search!==" "&& $search!=="")
             $search = $data['search'];
 
-            $qa = "SELECT * FROM products WHERE description like '%$search%' or name LIKE '%$search%' ";
+            $qa = "SELECT * FROM products WHERE description like '%$search%' and type='Motocycle' or name LIKE '%$search%' and type='Motocycle' ";
 
             // $qa="SELECT * FROM products ";
             $qa1=mysqli_query($conn,$qa);
@@ -173,7 +223,9 @@ require_once 'cors.php';
                 $response['error'] = true;   
                 $response['message'] = 0;
                 $response['val'] = 0;   
-                // $response['id'] = $id;  
+                // $response['id'] = $id; 
+                
+                $response['data1'] =$qa; 
                 $response['data'] ="not present";
               }
            
@@ -183,7 +235,54 @@ require_once 'cors.php';
               $response['message'] = 'required parameters are not available';
             }
           break;
-          
+           
+        case 'a_search_spare':  
+         if($data){
+            // if(1==1){
+            // $data=array();
+            // if(isset($search)&& $search!==" "&& $search!=="")
+            $search = $data['search'];
+
+            $qa = "SELECT * FROM products WHERE description like '%$search%' and type='Spareparts' or name LIKE '%$search%'and type='Spareparts'";
+
+            // $qa="SELECT * FROM products ";
+            $qa1=mysqli_query($conn,$qa);
+            $mData=array();
+         
+            // $mDataI=array();
+         
+            $x=0;
+            if(@mysqli_num_rows($qa1)>0){	
+              $row=@mysqli_fetch_assoc($qa1); 
+              array_push($mData,$row);
+            while($row=@mysqli_fetch_assoc($qa1)){
+             
+              array_push($mData,$row);
+
+            }
+            $response['error'] = false;   
+            $response['message'] = "ok";   
+            $response['val'] = 2;   
+            // $response['id'] = $id;   
+            // $response['name'] = $name;	
+              
+            $response['data'] =$mData;
+
+       }else{
+                $response['error'] = true;   
+                $response['message'] = 0;
+                $response['val'] = 0;   
+                // $response['id'] = $id;  
+                $response['data'] =$qa;
+              }
+           
+         
+            } else{
+              $response['error'] = true;   
+              $response['message'] = 'required parameters are not available';
+            }
+          break;
+            
   case 'a_m1':  
     if($data){
       // if(1==1){
@@ -237,15 +336,69 @@ require_once 'cors.php';
         $response['message'] = 'required parameters are not available';
       }
     break;
-          
-  case 'a_m':  
+                  
+  case 'a_s1':  
     if($data){
       // if(1==1){
       // $data=array();
       // $email = $data['email'];
       // $pasword = $data['pass'];
       
-      $qa="SELECT * FROM products ";
+      $nm = $data['nm'];
+      $qa="SELECT * FROM products where name LIKE '%$nm%' and type='Spareparts'";
+      $qa1=mysqli_query($conn,$qa);
+      // $mData=array();
+      // $mDataI=array();
+      $mOb=[];
+      $x=0;
+     
+      while($row=@mysqli_fetch_assoc($qa1)){
+        // $mData[$x]=$row;
+        $img=$row["img"];
+        $mOb[$x]["pro"]=$row;
+        $qb="SELECT * FROM images where mid='".$img."'";
+        $qb1=mysqli_query($conn,$qb);
+        $x1=0;
+        while($row1=@mysqli_fetch_assoc($qb1)){
+          
+          // $mData[$x][$x1]=$row1;
+          $mOb[$x]["im"][$x1]=$row1;
+          $x1=$x1+1;
+        }
+        // $mData[]["img"]=$mDataI[];
+        $x=$x+1;
+		}
+        if(@mysqli_num_rows($qa1)>0){	             
+          $response['error'] = false;   
+          $response['message'] = "ok";   
+          $response['val'] = 2;   
+          // $response['id'] = $id;   
+          // $response['name'] = $name;	
+            
+          $response['data'] = $mOb;
+        }else{
+          $response['error'] = false;   
+          $response['message'] = 0;
+          $response['val'] = 0;   
+          // $response['id'] = $id;  
+          $response['data'] = $qa1;
+        }
+     
+   
+      } else{
+        $response['error'] = true;   
+        $response['message'] = 'required parameters are not available';
+      }
+    break;
+           
+  case 'a_moto':  
+    if($data){
+      // if(1==1){
+      // $data=array();
+      // $email = $data['email'];
+      // $pasword = $data['pass'];
+      
+      $qa="SELECT * FROM products where type='Motocycle'";
       $qa1=mysqli_query($conn,$qa);
       // $mData=array();
       // $mDataI=array();
@@ -291,6 +444,60 @@ require_once 'cors.php';
       }
     break;
  
+          
+  case 'a_spare':  
+    if($data){
+      // if(1==1){
+      // $data=array();
+      // $email = $data['email'];
+      // $pasword = $data['pass'];
+      
+      $qa="SELECT * FROM products where type='Spareparts'";
+      $qa1=mysqli_query($conn,$qa);
+      // $mData=array();
+      // $mDataI=array();
+      $mOb=[];
+      $x=0;
+     
+      while($row=@mysqli_fetch_assoc($qa1)){
+        // $mData[$x]=$row;
+        $img=$row["img"];
+        $mOb[$x]["pro"]=$row;
+        $qb="SELECT * FROM images where mid='".$img."'";
+        $qb1=mysqli_query($conn,$qb);
+        $x1=0;
+        while($row1=@mysqli_fetch_assoc($qb1)){
+          
+          // $mData[$x][$x1]=$row1;
+          $mOb[$x]["im"][$x1]=$row1;
+          $x1=$x1+1;
+        }
+        // $mData[]["img"]=$mDataI[];
+        $x=$x+1;
+		}
+        if(@mysqli_num_rows($qa1)>0){	             
+          $response['error'] = false;   
+          $response['message'] = "ok";   
+          $response['val'] = 2;   
+          // $response['id'] = $id;   
+          // $response['name'] = $name;	
+            
+          $response['data'] = $mOb;
+        }else{
+          $response['error'] = false;   
+          $response['message'] = 0;
+          $response['val'] = 0;   
+          // $response['id'] = $id;  
+          $response['data'] = $qa1;
+        }
+     
+   
+      } else{
+        $response['error'] = true;   
+        $response['message'] = 'required parameters are not available';
+      }
+    break;
+
 case 'a_up':
   // $all=file_get_contents('php://input');
   // echo "all: ".extract($_POST);
