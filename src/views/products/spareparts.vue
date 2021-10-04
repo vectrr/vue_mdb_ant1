@@ -258,7 +258,7 @@ export default {
       .then((response) => {
          const results = response.data
          const myData = response.data.data
-        // console.log("response: "+JSON.stringify(response));
+        console.log("response: "+JSON.stringify(response));
         console.log("response1: "+ JSON.stringify(myData));
         
         if(results.val==2){
