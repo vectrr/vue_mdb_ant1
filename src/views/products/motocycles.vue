@@ -15,11 +15,8 @@
             <!-- <div style="" class="mDiv">
               <mdb-input label="Search" v-model="value"  />
             </div> -->
-            <input class="form-control search_input dProperty mDiv" id="search" style="float:left;border-radius: 50px 50px;max-width: 400px;text-align:left;margin-left: auto;margin-right: auto;padding-left:32px;cursor:text; box-shadow:12px 12px 12px black;box-shadow: 1px 6px 14px 6px #09131596;margin-bottom:33px" type="search" placeholder="Search motocycle" aria-label="Search"  v-on:keyup="keymonitor"/>
+            <input class="form-control search_input dProperty mDiv" id="search" style="float:;border-radius: 50px 50px;max-width: 400px;text-align:left;margin-left: auto;margin-right: auto;padding-left:32px;cursor:text; box-shadow:12px 12px 12px black;box-shadow: 1px 6px 14px 6px #09131596;margin-bottom:33px" type="search" placeholder="Search motocycle" aria-label="Search"  v-on:keyup="keymonitor"/>
                 <!-- {{mItems}} -->
-                 <mdb-btn color="default">Refresh</mdb-btn>
-
-                <mdb-icon icon="sync-alt"  class="refresh-start"/>
            
 
   <mdb-list-group v-if="dList">
@@ -42,7 +39,9 @@
 
     <!-- <mylist :posts="mItems" /> -->
           </a-affix>
-
+<div style="margin-left:auto;margin-right:auto;">
+          <mdb-btn @click="reload" style="">Refresh</mdb-btn>
+</div>
         <!-- <a-affix :offset-top="top1" :style="{left: 200}">
            <div style="" class="mDiv">
           <a-layout-sider 
@@ -72,7 +71,7 @@
 import mlist from "./list.vue"
 // import mylist from "./mList.vue"
 import axios from "axios"
-import { mdbContainer, mdbCol, mdbRow,  mdbEdgeHeader, mdbListGroup,mdbListGroupItem,mdbIcon,mdbBtn } from 'mdbvue';
+import { mdbContainer, mdbCol, mdbRow,  mdbEdgeHeader, mdbListGroup,mdbListGroupItem,mdbBtn } from 'mdbvue';
 // import data from "./posts.json"
 
 export default {
@@ -87,7 +86,7 @@ export default {
     mdbCol,
     mdbRow,
     mdbEdgeHeader,
-    mdbIcon,
+    // mdbIcon,
     mdbBtn,
     // mdbInput,
     // mdbCardBody
@@ -108,6 +107,12 @@ export default {
     }
   },
   methods: {
+      reload(){
+      console.log("reloading...");
+      // this.list_key=this.list_key+1;
+       this.refresh();
+       this.fetchNews();
+    },
     refresh(){
       console.log("refreshing...");
       this.list_key=this.list_key+1;
@@ -324,6 +329,12 @@ export default {
 </script>
 <style scoped>
 
+.btn-default {
+  margin-left: 41%;
+  margin-right:45%;
+ color:#e9ecef;
+ background-color:#0c0f24 !important
+}
  .mDiv{
     background-color: #fff;
    padding-top: 3px;

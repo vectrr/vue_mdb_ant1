@@ -40,7 +40,7 @@
 
     <!-- <mylist :posts="mItems" /> -->
           </a-affix>
-<div style="margin-left:auto;margin-right:auto;background-color:red">
+<div style="margin-left:auto;margin-right:auto;">
           <mdb-btn @click="reload" style="">Refresh</mdb-btn>
 </div>
         <!-- <a-affix :offset-top="top1" :style="{left: 200}">
@@ -304,7 +304,8 @@ export default {
 </script>
 <style scoped>
 .btn-default {
-  margin-left: auto;margin-right:auto;
+  margin-left: 41%;
+  margin-right:45%;
  color:#e9ecef;
  background-color:#0c0f24 !important
 }
