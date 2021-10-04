@@ -593,6 +593,7 @@ case 'a_up':
       $response['message'] = $query;
     }
 
+    
     // $response['message'] = $_FILES;
   }else{  
     $response['error'] = true;   
