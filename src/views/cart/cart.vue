@@ -5,37 +5,7 @@
        <mdb-edge-header color="" style="background-color: #080e35 ">
         <div class="home-page-background"></div>
       </mdb-edge-header>
-           
-    <mdb-container class="free-bird">
-        <mdb-row>
-          <mdb-col md="10" class="mx-auto white z-depth-1 py-2 px-2">
-            
-          <h3  style="text-align: center;"><strong>Motocycles</strong></h3>
-          <a-affix :offset-top="top"  >
-            <div style="" class="mDiv">
-              <mdb-input label="Search" v-model="value"  />
-            </div>
-          </a-affix>
-
-        <!-- <a-affix :offset-top="top1" :style="{left: 200}">
-           <div style="" class="mDiv">
-          <a-layout-sider 
-            breakpoint="lg"
-            collapsed-width="0"
-            @collapse="onCollapse"
-            @breakpoint="onBreakpoint"
-          >
-         
-            <div class="mDiv logo" />
-            <mdb-input label="Search" v-model="value"  />
-       
-          </a-layout-sider>
-             </div>
-        </a-affix> -->
-          </mdb-col>
-        </mdb-row>
-      </mdb-container>
-  
+          
      </div>
     <mlist :posts="products" />
     <upload />
@@ -47,7 +17,7 @@
 import upload from "./upload.vue"
 import mlist from "./list.vue"
 import axios from "axios"
-import { mdbContainer, mdbCol, mdbRow,  mdbEdgeHeader, mdbInput } from 'mdbvue';
+import {  mdbEdgeHeader,  } from 'mdbvue';
 // import data from "./posts.json"
 
 export default {
@@ -56,11 +26,11 @@ export default {
     // NewsFilter,
     upload,
     mlist,
-    mdbContainer,
-    mdbCol,
-    mdbRow,
+    // mdbContainer,
+    // mdbCol,
+    // mdbRow,
     mdbEdgeHeader,
-    mdbInput,
+    // mdbInput,
     // mdbCardBody
   },
   
