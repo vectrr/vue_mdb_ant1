@@ -31,7 +31,7 @@
             width: 80%;">
             
               <div   v-for="(item,index) in mItems" :key="index">
-                <router-link :to="'/post/' + item.name+ '/moto'" > 
+                <router-link :to="'/post/' + item.name+ '/' + item.type" > 
             <mdb-list-group-item  :action="true" >
               
                 {{item.name}}
@@ -52,7 +52,7 @@
             </div>
           </mdb-list-group>
 
- <router-link to="/motocycles" > <mdb-btn style="margin-top: 42px;" outline="white" rounded color="white" ><mdb-icon icon="home"/> Explore</mdb-btn></router-link>
+            <router-link to="/motocycles" > <mdb-btn style="margin-top: 42px;" outline="white" rounded color="white" ><mdb-icon icon="home"/> Explore</mdb-btn></router-link>
 
             <!-- <mdb-nav-item  to="#/motocycles" style="padding:0px;max-width:142px;background-color:red;margin-left:auto;margin-right:auto;" active>
             <mdb-btn outline="white" rounded color="white" ><mdb-icon icon="home"/> Explore</mdb-btn></mdb-nav-item> -->
@@ -156,7 +156,8 @@
            this.cRequest=false;
           console.log(myData)
            this.mItems = myData.map(post => ({
-             name:post.name
+             name:post.name,
+             type:post.type
            }))
            
            this.dList=true;

@@ -3,37 +3,7 @@
   <!-- Card -->
   <mdb-card class="mTop1">
     <mdb-card-body>
-      <!-- <a-form layout="inline" :form="form" @submit="handleSubmit">
-    <a-form-item :validate-status="userNameError() ? 'error' : ''" :help="userNameError() || ''">
-      <a-input
-        v-decorator="[
-          'userName',
-          { rules: [{ required: true, message: 'Please input your username!' }] },
-        ]"
-        placeholder="Username"
-      >
-        <a-icon slot="prefix" type="user" style="color:rgba(0,0,0,.25)" />
-      </a-input>
-    </a-form-item>
-    <a-form-item :validate-status="passwordError() ? 'error' : ''" :help="passwordError() || ''">
-      <a-input
-        v-decorator="[
-          'password',
-          { rules: [{ required: true, message: 'Please input your Password!' }] },
-        ]"
-        type="password"
-        placeholder="Password"
-         icon="lock"
-      >
-        <a-icon slot="prefix" type="lock" style="color:rgba(0,0,0,.25)" />
-      </a-input>
-    </a-form-item>
-    <a-form-item>
-      <mdb-btn type="primary" html-type="submit" :disabled="hasErrors(form.getFieldsError())">
-        Log in
-      </mdb-btn>
-    </a-form-item>
-  </a-form> -->
+     
       <form @submit="handleSubmit">
         <p class="h4 text-center py-4">Sign up</p>
         <div class="grey-text">
@@ -43,29 +13,17 @@
           <mdb-input label="Your password" icon="lock" group type="password" validate @input="hPass"/>
         </div>
         <div class="text-center py-4 mt-3">
-          <mdb-btn color="cyan" type="submit">Login</mdb-btn>
+          <mdb-btn style="
+ color:#e9ecef;
+ background-color:#0c0f24;" color="" type="submit">Login</mdb-btn>
         </div>
       </form>
-<imd src="../../s/s1/api.php"/>
+
+    <imd src="../../s/s1/api.php"/>
       
     </mdb-card-body>
   </mdb-card>
   <!-- Card -->
-      <div class="w-100 " style="position:absolute;bottom:-25px">
-        <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 40" preserveAspectRatio="none" shape-rendering="auto">
-          <defs>
-            <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
-          </defs>
-          <g class="moving-waves">
-            <use xlink:href="#gentle-wave" x="48" y="-1" fill="rgba(255,255,255,0.40" />
-            <use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(255,255,255,0.35)" />
-            <use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(255,255,255,0.25)" />
-            <use xlink:href="#gentle-wave" x="48" y="8" fill="rgba(255,255,255,0.20)" />
-            <use xlink:href="#gentle-wave" x="48" y="13" fill="rgba(255,255,255,0.15)" />
-            <use xlink:href="#gentle-wave" x="48" y="16" fill="rgba(255,255,255,0.95" />
-          </g>
-        </svg>
-      </div>
 </div>
 </template>
 <script>
@@ -157,19 +115,6 @@ var murl=this.$store.state.mUrl;
           console.log("error"+response)
       });
 
-// const article = { email: "Vue POST Request Example" };
-// const headers={'Content-Type': 'multipart/form-data'}
-//   axios.post("http://localhost/w/15minutes/api.php?Regd_ID=admin_l", article,headers)
-//     .then((response) => { 
-//         console.log("response: "+response);
-//         console.log("response1: "+ JSON.stringify(response));
-//         console.log("response2: "+response.data.message);
-//     })
-//     .catch(error => {
-//       this.errorMessage = error.message;
-//       console.error("There was an error!", error);
-//     });
-
     },
     hEmail (val) {
      this.email=val
@@ -186,6 +131,13 @@ var murl=this.$store.state.mUrl;
 
 
 <style>
+
+.cyan {
+  margin-left: 50%;
+  margin-right:50%;
+ color:#e9ecef;
+ background-color:#0c0f24 !important
+}
  .bgz {
    margin-top: -102px;
     padding-top: 100px;

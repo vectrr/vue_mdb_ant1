@@ -303,6 +303,7 @@ export default {
 }
 </script>
 <style scoped>
+
 .btn-default {
   margin-left: 41%;
   margin-right:45%;

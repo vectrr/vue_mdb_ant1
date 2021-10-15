@@ -84,10 +84,16 @@
         </md-card-content>
 
        
-
+<!-- 
         <md-card-actions>
           <md-button type="submit" class="md-primary" :disabled="sending">Post Product</md-button>
-        </md-card-actions>
+        </md-card-actions> -->
+
+          <div class="text-center py-4 mt-3">
+          <mdb-btn style="color:#e9ecef;
+background-color:#0c0f24;" color="" type="submit" :disabled="sending">Add</mdb-btn>
+        </div>
+
       </md-card>
 
       <md-snackbar :md-active.sync="userSaved">The Product {{ lastUser }} was saved with success!</md-snackbar>
@@ -100,7 +106,7 @@
 </template>
 
 <script>
-  import {  mdbCard, mdbCardBody,  } from 'mdbvue';
+  import {  mdbCard, mdbCardBody,mdbBtn  } from 'mdbvue';
   
  import UploadImages from "vue-upload-drop-images"
   import { validationMixin } from 'vuelidate';
@@ -117,6 +123,7 @@ const axios = require('axios');
         UploadImages,
         mdbCard,
         mdbCardBody,
+        mdbBtn,
         // mdbIcon,
         // mdbDatatable2 
       },

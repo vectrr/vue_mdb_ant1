@@ -8,6 +8,7 @@ import Products from './views/admin/products.vue'
 import Motocycles from './views/products/motocycles.vue'
 import Spareparts from './views/products/spareparts.vue'
 import Cart from './views/cart/cart.vue'
+import Contact from './views/contact/contact_us.vue'
 import Motocycles1 from './views/admin/motocycles.vue'
 
 Vue.use(Router)
@@ -50,11 +51,22 @@ export default new Router({
       name: 'Motocycles',
       component: Motocycles1
     },
-    
     {
-      path:  '/post/:name/moto',
+      path:  '/post/:name/Motocycle',
       name: 'Motocycles',
       component: Motocycles,
+      props: true
+    },
+    {
+      path:  '/post/:name/Spareparts',
+      name: 'spareparts',
+      component: Spareparts,
+      props: true
+    },
+    {
+      path:  '/contact',
+      name: 'Contact',
+      component: Contact,
       props: true
     }
     // {

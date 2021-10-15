@@ -12,7 +12,7 @@
         <mdb-nav-item to="/motocycles">Motocycles</mdb-nav-item>
         <mdb-nav-item to="/spareparts">Spareparts</mdb-nav-item>
         <mdb-nav-item to="/motocycles">Services</mdb-nav-item>
-        <mdb-nav-item href="#">Contact us</mdb-nav-item>
+        <mdb-nav-item to="/contact">Contact us</mdb-nav-item>
         <mdb-nav-item  to="/admin">Admin</mdb-nav-item>
         
       </mdb-navbar-nav>
