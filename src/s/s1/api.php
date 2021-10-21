@@ -42,7 +42,40 @@ require_once 'cors.php';
             $response['message'] = 'required parameters are not available';
           }
         break;
-
+        case 'del_m1':  
+          if($data){
+            // if(1==1){
+            // $data=array();
+            $id = $data['id'];
+            // $pasword = $data['pass'];
+            
+            $qb="DELETE FROM services WHERE sid='$id'";
+            $qb1=mysqli_query($conn,$qb);
+            $qa="SELECT * FROM admin  where sid='$id'";
+            
+          
+            sleep(3);
+            $qa1=mysqli_query($conn,$qa);
+              if($qa1){	             
+                $response['error'] = true;   
+                $response['message'] = "present";   
+                $response['val'] = 2;   
+                $response['id'] = $id;   	
+              }else{
+                $response['error'] = false;   
+                $response['message'] = "Deleted";
+                $response['val'] = 22;   
+                $response['id'] = $id;  
+                $response['data'] = $qa1;
+              }
+           
+         
+            } else{
+              $response['error'] = true;   
+              $response['message'] = 'required parameters are not available';
+            }
+          break;
+  
         case 'admin_l':  
           if($data){
             // if(1==1){
@@ -444,60 +477,108 @@ require_once 'cors.php';
     break;
  
           
-  case 'a_spare':  
-    if($data){
-      // if(1==1){
-      // $data=array();
-      // $email = $data['email'];
-      // $pasword = $data['pass'];
-      
-      $qa="SELECT * FROM products where type='Spareparts'";
-      $qa1=mysqli_query($conn,$qa);
-      // $mData=array();
-      // $mDataI=array();
-      $mOb=[];
-      $x=0;
-     
-      while($row=@mysqli_fetch_assoc($qa1)){
-        // $mData[$x]=$row;
-        $img=$row["img"];
-        $mOb[$x]["pro"]=$row;
-        $qb="SELECT * FROM images where mid='".$img."'";
-        $qb1=mysqli_query($conn,$qb);
-        $x1=0;
-        while($row1=@mysqli_fetch_assoc($qb1)){
-          
-          // $mData[$x][$x1]=$row1;
-          $mOb[$x]["im"][$x1]=$row1;
-          $x1=$x1+1;
-        }
-        // $mData[]["img"]=$mDataI[];
-        $x=$x+1;
-		}
-        if(@mysqli_num_rows($qa1)>0){	             
-          $response['error'] = false;   
-          $response['message'] = "ok";   
-          $response['val'] = 2;   
-          // $response['id'] = $id;   
-          // $response['name'] = $name;	
+    case 'a_spare':  
+      if($data){
+        // if(1==1){
+        // $data=array();
+        // $email = $data['email'];
+        // $pasword = $data['pass'];
+        
+        $qa="SELECT * FROM products where type='Spareparts'";
+        $qa1=mysqli_query($conn,$qa);
+        // $mData=array();
+        // $mDataI=array();
+        $mOb=[];
+        $x=0;
+       
+        while($row=@mysqli_fetch_assoc($qa1)){
+          // $mData[$x]=$row;
+          $img=$row["img"];
+          $mOb[$x]["pro"]=$row;
+          $qb="SELECT * FROM images where mid='".$img."'";
+          $qb1=mysqli_query($conn,$qb);
+          $x1=0;
+          while($row1=@mysqli_fetch_assoc($qb1)){
             
-          $response['data'] = $mOb;
-        }else{
-          $response['error'] = false;   
-          $response['message'] = 0;
-          $response['val'] = 0;   
-          // $response['id'] = $id;  
-          $response['data'] = $qa1;
-        }
-     
-   
-      } else{
-        $response['error'] = true;   
-        $response['message'] = 'required parameters are not available';
+            // $mData[$x][$x1]=$row1;
+            $mOb[$x]["im"][$x1]=$row1;
+            $x1=$x1+1;
+          }
+          // $mData[]["img"]=$mDataI[];
+          $x=$x+1;
       }
-    break;
-
-case 'a_up':
+          if(@mysqli_num_rows($qa1)>0){	             
+            $response['error'] = false;   
+            $response['message'] = "ok";   
+            $response['val'] = 2;   
+            // $response['id'] = $id;   
+            // $response['name'] = $name;	
+              
+            $response['data'] = $mOb;
+          }else{
+            $response['error'] = false;   
+            $response['message'] = 0;
+            $response['val'] = 0;   
+            // $response['id'] = $id;  
+            $response['data'] = $qa1;
+          }
+       
+     
+        } else{
+          $response['error'] = true;   
+          $response['message'] = 'required parameters are not available';
+        }
+      break;
+  
+         
+      case 'a_services':  
+        if($data){
+          // if(1==1){
+          // $data=array();
+          // $email = $data['email'];
+          // $pasword = $data['pass'];
+          
+          $qa="SELECT * FROM services ";
+          $qa1=mysqli_query($conn,$qa);
+          // $mData=array();
+          // $mDataI=array();
+          $mOb=[];
+          $x=0;
+         
+          while($row=@mysqli_fetch_assoc($qa1)){
+          
+            // $id=$row["sid"];
+            // $head=$row["head"];
+            // $desc=$row["description"];
+            
+            // $mOb=$row;
+            array_push($mOb, $row);
+          
+        }
+            if(@mysqli_num_rows($qa1)>0){	             
+              $response['error'] = false;   
+              $response['message'] = "ok";   
+              $response['val'] = 2;   
+              // $response['id'] = $id;   
+              // $response['name'] = $name;	
+                
+              $response['data'] = $mOb;
+            }else{
+              $response['error'] = false;   
+              $response['message'] = 0;
+              $response['val'] = 0;   
+              // $response['id'] = $id;  
+              $response['data'] = $qa1;
+            }
+         
+       
+          } else{
+            $response['error'] = true;   
+            $response['message'] = 'required parameters are not available';
+          }
+        break;
+    
+        case 'a_up':
   // $all=file_get_contents('php://input');
   // echo "all: ".extract($_POST);
   if(isTheseParametersAvailable(array('nm'))){
@@ -598,8 +679,38 @@ case 'a_up':
   }else{  
     $response['error'] = true;   
     $response['message'] = 'required parameters are not available1';   
+  } 
+  break;  
+
+case 'a_up1': 
+
+  if(isTheseParametersAvailable(array('heading','desc'))){
+    
+    $heading=$_POST["heading"];
+    $desc=$_POST["desc"];
+
+
+    $query = "INSERT INTO services (head, description) VALUES ('".$heading."','".$desc."')";
+    $qb1=mysqli_query($conn,$query);
+
+    if($qb1){
+      $response['code'] = 1;
+      $response['message'] = "Successfully added";
+    }else{
+      $response['code'] = 2;
+      $response['message'] = "Not added";
+    }
+
+    
+    // $response['message'] = $_FILES;
+  }else{  
+    $response['error'] = true;   
+    $response['message'] = 'required parameters are not available';   
 } 
 break;
+
+
+
 default:   
  $response['error'] = true;   
  $response['message'] = 'Invalid Operation Called';  

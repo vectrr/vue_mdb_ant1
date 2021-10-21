@@ -18,7 +18,7 @@
     justify-content: space-around;" class="md-layout" @submit.prevent="validateUser">
       <md-card class="md-layout-item md-size-50 md-small-size-100">
         <md-card-header>
-          <div class="md-title">Products</div>
+          <div class="md-title text-center">Products</div>
         </md-card-header>
 
         <md-card-content>
@@ -37,7 +37,7 @@
     
             <div class="md-layout-item md-small-size-100">
               <md-field :class="getValidationClass('age')">
-                <label for="age">Phone numebr</label>
+                <label for="age">Phone numeber</label>
                 <md-input type="number" id="age" name="age" autocomplete="age" v-model="form.age" :disabled="sending" />
                 <span class="md-error" v-if="!$v.form.age.required">The Price is required</span>
                 <span class="md-error" v-else-if="!$v.form.age.maxlength">Invalid Price</span>
@@ -52,8 +52,25 @@
             <span class="md-error" v-if="!$v.form.email.required">A valid email is required</span>
             <span class="md-error" v-else-if="!$v.form.email.email">Invalid email</span>
           </md-field>
+             
+               <div class="md-layout md-gutter">
+           
+            <div class="md-layout-item md-small-size-100">
+                          
+              <mdb-input
+                type="textarea"
+                outline
+                inputClass="z-depth-1 p-3"
+                label="Message"  :rows="3"
+                :disabled="sending"
+                v-model="desc"
+              />
+          
+            </div>
+          </div>
         </md-card-content>
 
+           
        
 
 
@@ -78,12 +95,12 @@ background-color:#0c0f24;" color="" type="submit" :disabled="sending">Send Inque
 </template>
 
 <script>
-  import {  mdbCard, mdbCardBody, mdbBtn } from 'mdbvue';
+  import {  mdbCard, mdbCardBody, mdbBtn,mdbInput } from 'mdbvue';
   
   import { validationMixin } from 'vuelidate';
   import {
     required,
-    email,
+ 
     minLength,
     maxLength
   } from 'vuelidate/lib/validators'
@@ -95,6 +112,7 @@ const axios = require('axios');
         // UploadImages,
         mdbCard,
         mdbCardBody,
+        mdbInput,
         // mdbIcon,
         // mdbDatatable2 
       },
@@ -138,7 +156,9 @@ const axios = require('axios');
         },
         email: {
           // required,
-          email
+          
+          minLength: minLength(4),
+          required
         }
       }
     },

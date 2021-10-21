@@ -20,6 +20,10 @@
           <a-icon type="tool" />
           <span class="nav-text">Spare parts</span>
         </a-menu-item>
+        <a-menu-item key="4" @click="mChange4">
+          <!-- <a-icon type="tool" /> -->
+          <span class="nav-text">services</span>
+        </a-menu-item>
         <a-menu-item key="3" @click="mChange3">
           <a-icon type="upload" />
           <span class="nav-text">Upload</span>
@@ -34,6 +38,7 @@
            <mOto     v-if="mProduct === 1"/>
            <mSpare v-if="mProduct === 2" />
            <mUpload v-if="mProduct === 3" />
+           <mServices v-if="mProduct === 4" />
         </div>
       </a-layout-content>
       <!-- <a-layout-footer style="textAlign: center">
@@ -42,56 +47,7 @@
     </a-layout>
   </a-layout>
     <div style="width: 100%">
-    <!-- <a-affix :offset-top="top">
-      <div style="background-color:#001529;height:63px;margin-top:-50px;" ></div>
-       <md-progress-bar md-mode="indeterminate" v-if="sending" />
-         <div style="width: 256px">
-        <a-button type="primary" style="margin-bottom: 16px"  @click="toggleCollapsed">
-        <a-icon :type="collapsed ? 'menu-unfold' : 'menu-fold'" />
-        </a-button>
-        <a-menu
-        :default-selected-keys="['1']"
-       
-        mode="inline"
-        theme="dark"
-        :inline-collapsed="collapsed"
-        >
-        <a-menu-item key="1">
-            <a-icon type="pie-chart" />
-            <span>Motocycles</span>
-        </a-menu-item>
-        <a-menu-item key="2">
-            <a-icon type="desktop" />
-            <span>Spare parts</span>
-        </a-menu-item>
-        <a-menu-item key="3">
-            <a-icon type="inbox" />
-            <span>Upload</span>
-        </a-menu-item>
-
-        <a-sub-menu key="sub1">
-        <span slot="title"><a-icon type="car" /><span>Motocycle</span></span>
-        <a-menu-item key="5">
-         Upload
-        </a-menu-item>
-        <a-menu-item key="6">
-         View
-        </a-menu-item>
-      </a-sub-menu>
-
-        <a-sub-menu key="sub2">
-        <span slot="title"><a-icon type="tool" /><span>Spare parts</span></span>
-        <a-menu-item key="5">
-         Upload
-        </a-menu-item>
-        <a-menu-item key="6">
-         View
-        </a-menu-item>
-      </a-sub-menu>
-    
-        </a-menu>
-    </div>
- </a-affix> -->
+  
    </div>
  
   
@@ -103,6 +59,7 @@
 import mOto from "./motocycles.vue"
 import mSpare from "./spareparts.vue"
 import mUpload from "./upload.vue"
+import mServices from "./services.vue"
   // import {  mdbCard, mdbCardBody,  } from 'mdbvue';
   
 //  import UploadImages from "vue-upload-drop-images"
@@ -120,6 +77,7 @@ const axios = require('axios');
         mUpload,
         mOto,
         mSpare,
+        mServices,
         // UploadImages,
         // mdbCard,
         // mdbCardBody,
@@ -176,6 +134,9 @@ const axios = require('axios');
       },
       mChange3(){
         this.mProduct=3;
+      },
+      mChange4(){
+        this.mProduct=4;
       },
         onCollapse(collapsed, type) {
       console.log(collapsed, type);

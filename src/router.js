@@ -9,6 +9,7 @@ import Motocycles from './views/products/motocycles.vue'
 import Spareparts from './views/products/spareparts.vue'
 import Cart from './views/cart/cart.vue'
 import Contact from './views/contact/contact_us.vue'
+import Services from './views/services/services.vue'
 import Motocycles1 from './views/admin/motocycles.vue'
 
 Vue.use(Router)
@@ -67,6 +68,12 @@ export default new Router({
       path:  '/contact',
       name: 'Contact',
       component: Contact,
+      props: true
+    },
+    {
+      path:  '/services',
+      name: 'Services',
+      component: Services,
       props: true
     }
     // {

@@ -1,9 +1,9 @@
 <template>
 <div>
-  <mdb-navbar  v-bind:class = "isMobile()?'mNavc':'dNavc'"   color="info" position="top" dark transparent scrolling style="    background: linear-gradient(to bottom,#0000007a,#0000007a,#ffffff0f 100%);">
+  <mdb-navbar  v-bind:class = "isMobile()?'mNavc':'dNavc'"   color="info" position="top" dark transparent scrolling style=" background: linear-gradient(rgb(0, 0, 0), rgb(0 0 0 / 88%), rgb(0 0 0 / 30%) 100%);">
     <mdb-navbar-brand to="/"  href="../assets/img/hm.png">
-           <img src="./assets/img/logo.png" alt=" logo" style="max-width:33px">
-    15Minutes 
+           <img src="./assets/img/logo.png" alt=" logo" style="max-width:33px;background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgb(0 0 0 / 0%) 100%);border-radius: 5px;" ><span style="color: white;font-weight: 500;text-shadow: rgb(203 109 255) 1px 1px 2px;">
+    15Minutes </span>
     </mdb-navbar-brand>
 
     <mdb-navbar-toggler>
@@ -11,7 +11,7 @@
         <mdb-nav-item  to="/" active>Home</mdb-nav-item>
         <mdb-nav-item to="/motocycles">Motocycles</mdb-nav-item>
         <mdb-nav-item to="/spareparts">Spareparts</mdb-nav-item>
-        <mdb-nav-item to="/motocycles">Services</mdb-nav-item>
+        <mdb-nav-item to="/services">Services</mdb-nav-item>
         <mdb-nav-item to="/contact">Contact us</mdb-nav-item>
         <mdb-nav-item  to="/admin">Admin</mdb-nav-item>
         

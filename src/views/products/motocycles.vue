@@ -286,32 +286,6 @@ export default {
           console.log("error"+response)
       });
 
-      // try {
-      //   const url = "https://ti-react-test.herokuapp.com/users"
-      //   const response = await axios.get(url)
-      //     console.log("Server Error:", response.data)
-      //   const results = response.data
-      //   this.posts = results.map(post => ({
-      //     id: post.id,
-      //     name: post.name,
-      //     occupation: post.occupation,
-      //     email: post.email,
-      //     bio: post.bio,
-      //     created_at: post.created_at,
-      //     updated_at: post.updated_at
-         
-      //   }))
-      // } catch (err) {
-      //   if (err.response) {
-      //     // client received an error response (5xx, 4xx)
-      //     console.log("Server Error:", err)
-      //   } else if (err.request) {
-      //     // client never received a response, or request never left
-      //     console.log("Network Error:", err)
-      //   } else {
-      //     console.log("Client Error:", err)
-      //   }
-      // }
     },
   },
   mounted() {
