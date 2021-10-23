@@ -78,7 +78,7 @@ export default {
         this.sending=true;
         var murl=this.$store.state.mUrl;
     
-     var mCarray=[];
+        var mCarray=[];
     
       if(this.$cookies.isKey("mp")){
           // mp=this.$cookies.get("mp");
@@ -88,7 +88,7 @@ export default {
         const mData = { 
           mc:mCarray,
         }; 
-axios({
+        axios({
           method: 'POST',
           // url: 'http://localhost/nw/vap/regApi.php?apicall=signup'
           url: murl+'api.php?apicall=a_cart',
