@@ -9,39 +9,85 @@ require_once 'cors.php';
 
     // if(isset($_GET['Regd_ID'])){  
     // switch($_GET['Regd_ID']){ 
-      case 'del_m':  
-        if($data){
+      case 'mail':  
+        if($data){ 
           // if(1==1){
-          // $data=array();
-          $id = $data['id'];
-          // $pasword = $data['pass'];
-          
-          $qb="DELETE FROM products WHERE pid='$id'";
-          $qb1=mysqli_query($conn,$qb);
-          $qa="SELECT * FROM admin  where pid='$id'";
-          
-        
-          sleep(3);
-          $qa1=mysqli_query($conn,$qa);
-            if($qa1){	             
-              $response['error'] = true;   
-              $response['message'] = "present";   
-              $response['val'] = 2;   
-              $response['id'] = $id;   	
+            $nm=$data['nm'];
+            $phone=$data['phone'];
+            $em=$data['em'];
+            if(isset($data['msg'])){
+
+              $msg=$data['msg'];
             }else{
-              $response['error'] = false;   
-              $response['message'] = "Deleted";
-              $response['val'] = 22;   
-              $response['id'] = $id;  
-              $response['data'] = $qa1;
+
+              $msg="No message";
             }
-         
-       
-          } else{
+
+          $to = "ventor.pn@gmail.com";
+          $subject = "Query";
+          
+          $message = "<h4>Hello, my name is .".$nm."</h4>";
+          $message .= "<p><b>Message: </b>.".$msg."</p></br><p><b>Name: </b>.".$nm."</p></br><p><b>Phone no: </b>.".$phone."</p></br><p><b>Email: </b>.".$em."</p>";
+          
+          $header = "From:".$em." \r\n";
+          // $header .= "Cc:afgh@somedomain.com \r\n";
+          $header .= "MIME-Version: 1.0\r\n";
+          $header .= "Content-type: text/html\r\n";
+          
+          $retval = mail ($to,$subject,$message,$header);
+          
+          if( $retval == true ) {
+             
+            $response['error'] = false;   
+            $response['message'] = 'mail sent';
+            $response['code'] = 1;
+          }else {
+            
+            $response['error'] = true;   
+            $response['message'] = 'mail not sent';
+            $response['code'] = 1;
+          }
+        }else {
+            
             $response['error'] = true;   
             $response['message'] = 'required parameters are not available';
+            $response['code'] = 2;
           }
+         
         break;
+        case 'del_m':  
+          if($data){
+            // if(1==1){
+            // $data=array();
+            $id = $data['id'];
+            // $pasword = $data['pass'];
+            
+            $qb="DELETE FROM products WHERE pid='$id'";
+            $qb1=mysqli_query($conn,$qb);
+            $qa="SELECT * FROM admin  where pid='$id'";
+            
+          
+            sleep(3);
+            $qa1=mysqli_query($conn,$qa);
+              if($qa1){	             
+                $response['error'] = true;   
+                $response['message'] = "present";   
+                $response['val'] = 2;   
+                $response['id'] = $id;   	
+              }else{
+                $response['error'] = false;   
+                $response['message'] = "Deleted";
+                $response['val'] = 22;   
+                $response['id'] = $id;  
+                $response['data'] = $qa1;
+              }
+           
+         
+            } else{
+              $response['error'] = true;   
+              $response['message'] = 'required parameters are not available';
+            }
+          break;
         case 'del_m1':  
           if($data){
             // if(1==1){

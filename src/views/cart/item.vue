@@ -114,7 +114,7 @@
     
        <div  style="margin-left: auto;margin-right: auto;">
          <mdb-btn  color="primary" rounded style="float:left" @click.native="modal = true">preview</mdb-btn>
-       <mdb-btn  color="danger" rounded style="float:" @click="add2cart">Remove</mdb-btn>
+       <mdb-btn  color="danger" rounded style="float:" @click="remove">Remove</mdb-btn>
        </div>
 	</mdb-card>
 
@@ -220,7 +220,7 @@ mdbModal,
   }
   return arr;
 },
-    add2cart(){
+    remove(){
       // var mp=[];
       if(this.$cookies.isKey("mp")){
           // mp=this.$cookies.get("mp");
@@ -228,14 +228,17 @@ mdbModal,
            console.log(mCarray);
           this.removeItemAll(mCarray, this.post.id);
           console.log(mCarray);
+          console.log("remove1");
+          // this.$parent.removeItem();
+          this.$emit("removeItem");
       }
     
-      // mp.push(this.post.id);
+   // mp.push(this.post.id);
       var mp1= JSON.stringify(mCarray);
       // console.log(mp1);
       this.$cookies.set("mp",mp1,"22min");
       this.visible = false;
-      this.$parent.add2cart();
+      // this.$parent.add2cart();
 
     },
  currency(){

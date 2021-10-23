@@ -1,14 +1,23 @@
 <template>
   <Layout>
-    <div style="margin-top: -15px; overflow-x: ;">
+    
+   <div style="margin-top: -15px; overflow-x: ;">
        <md-progress-bar md-mode="indeterminate" v-if="sending" />
        <mdb-edge-header color="" style="background-color: #080e35 ">
         <div class="home-page-background"></div>
       </mdb-edge-header>
           
      </div>
-    <mlist :posts="products" />
-    <upload />
+         <md-card class="md-small-size-100" style="margin-left: auto;
+    margin-right: auto;width:99%;max-width:1100px;box-shadow: 0px 8px 22px #00000036;">
+
+
+       
+          <mlist :posts="products" :key="list_key"  @reload="reload" />
+        <upload />
+         </md-card>
+    
+   
    
   </Layout>
 </template>
@@ -40,15 +49,23 @@ export default {
        top:30,
        top1:50,
       products: [],
-      sending: false,
+      sending: false, 
+       list_key:0,
     }
   },
   methods: {
-     add2cart(){
-      console.log("cart");
-       this.products=[];
-      this.fetchNews();
+       reload(){
+      console.log("reloading...");
+      // this.list_key=this.list_key+1;
+       this.refresh();
+          
       this.$parent.add2cart();
+        this.products=[];
+       this.fetchNews();
+    },
+      refresh(){
+      console.log("refreshing...");
+      this.list_key=this.list_key+1;
     },
     // Helper function for extracting a nested image object
    onCollapse(collapsed, type) {
@@ -57,7 +74,7 @@ export default {
     onBreakpoint(broken) {
       console.log(broken);
     },
-    async fetchNews() {
+     fetchNews() {
         this.sending=true;
         var murl=this.$store.state.mUrl;
     
@@ -67,7 +84,7 @@ export default {
           // mp=this.$cookies.get("mp");
            mCarray=JSON.parse(this.$cookies.get("mp"))
 
-      
+      alert("mCarray..."+mCarray);
         const mData = { 
           mc:mCarray,
         }; 
@@ -133,4 +150,5 @@ axios({
 .ant-affix{
   box-shadow: 0 2px 5px 0 rgb(0 0 0 / 16%), 0 2px 10px 0 rgb(0 0 0 / 12%) ;
 }
+
 </style>
