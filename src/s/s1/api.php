@@ -38,8 +38,10 @@ require_once 'cors.php';
                 $eid=$row["eid"];
               }
               
-              $url="http://localhost:8080/#/md/".$eid."/cart";
-              $to = "ventor.pn@gmail.com";
+              $url="https://15minuteslogistics.co/#/md/".$eid."/cart";
+              // $url="http://localhost:8080/#/md/".$eid."/cart";
+              $to = "info@15minuteslogistics.co";
+              // $to = "ventor.pn@gmail.com";
               $subject = "Query";
               
               $message = "<h4>Hello, my name is .".$nm."</h4>";

@@ -222,9 +222,9 @@ mdbModal,
           if(mCarray.length>1){
 
           mCarray.forEach(element => {
-            this.sMsg=element+"This item already exist" ;
             if(mCarray.includes(this.post.id)){
-              
+              console.log(element+"exist")
+            this.sMsg="Added" ;
               this.userSaved=true;
             }else{
               mCarray.push(this.post.id);

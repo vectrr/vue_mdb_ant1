@@ -165,7 +165,7 @@ export default {
       mData:null, 
       error:false,
       emsg:null,
-      name:"namez",
+      name:null,
       mail:null,
       phone:null,
       // residences,
