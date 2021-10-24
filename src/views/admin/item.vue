@@ -161,9 +161,9 @@ this.post.price= formatter.format(2500);
     const article = { 
     id:this.id,
     // mid:this.mId
- };
+  };
       console.log("item_reload"+this.id);
-var murl=this.$store.state.mUrl;
+  var murl=this.$store.state.mUrl;
    axios({
           method: 'POST',
           // url: 'http://localhost/nw/vap/regApi.php?apicall=signup'
