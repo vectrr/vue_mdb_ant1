@@ -15,6 +15,13 @@ require_once 'cors.php';
             $nm=$data['nm'];
             $phone=$data['phone'];
             $em=$data['em'];
+            $tm=date('Y-m-d H:i:s');
+            $p="";
+            if(isset($data['mCarray'])&& !empty($data['mCarray'])){
+              $p=json_encode($data['mCarray']);
+              // $nm1 = preg_replace("/[\s_]/", "-", $nm);
+              // $url="https://15minuteslogistics.co/#/";
+            }
             if(isset($data['msg'])){
 
               $msg=$data['msg'];
@@ -22,31 +29,48 @@ require_once 'cors.php';
 
               $msg="No message";
             }
-
-          $to = "ventor.pn@gmail.com";
-          $subject = "Query";
-          
-          $message = "<h4>Hello, my name is .".$nm."</h4>";
-          $message .= "<p><b>Message: </b>.".$msg."</p></br><p><b>Name: </b>.".$nm."</p></br><p><b>Phone no: </b>.".$phone."</p></br><p><b>Email: </b>.".$em."</p>";
-          
-          $header = "From:".$em." \r\n";
-          // $header .= "Cc:afgh@somedomain.com \r\n";
-          $header .= "MIME-Version: 1.0\r\n";
-          $header .= "Content-type: text/html\r\n";
-          
-          $retval = mail ($to,$subject,$message,$header);
-          
-          if( $retval == true ) {
-             
-            $response['error'] = false;   
-            $response['message'] = 'mail sent';
-            $response['code'] = 1;
-          }else {
+            $q1 = "INSERT  INTO emails ( `nm`, `pn`, `em`, `p`, `tm`) VALUES  ('".$nm."','".$phone."','".$em."','".$p."','".$tm."')";
+            if($qb2=mysqli_query($conn,$q1)){
+              $qa="SELECT * FROM emails  where tm='$tm'";
+              $qa1=mysqli_query($conn,$qa);
+           
+              while($row=@mysqli_fetch_assoc($qa1)){
+                $eid=$row["eid"];
+              }
+              
+              $url="http://localhost:8080/#/md/".$eid."/cart";
+              $to = "ventor.pn@gmail.com";
+              $subject = "Query";
+              
+              $message = "<h4>Hello, my name is .".$nm."</h4>";
+              $message .= "<p><b>Message: </b>.".$msg."</p></br><p><b>Name: </b>.".$nm."</p></br><p><b>Phone no: </b>.".$phone."</p></br><p><b>Email: </b>.".$em."</p></br><p><b>Url: </b>.".$url."</p>";
+              
+              $header = "From:".$em." \r\n";
+              // $header .= "Cc:afgh@somedomain.com \r\n";
+              $header .= "MIME-Version: 1.0\r\n";
+              $header .= "Content-type: text/html\r\n";
+              
+              $retval = mail ($to,$subject,$message,$header);
+              
+              if( $retval == true ) {
+                 
+                $response['error'] = false;   
+                $response['message'] = 'mail sent';
+                $response['code'] = 1;
+              }else {
+                
+                $response['error'] = true;   
+                $response['message'] = 'mail not sent';
+                $response['code'] = 1;
+              }
+            }else{
+              $response['error'] = true;   
+              $response['message'] = 'not entered in db';
+              $response['q1'] = $q1;
+              $response['code'] = 2;
+            }
             
-            $response['error'] = true;   
-            $response['message'] = 'mail not sent';
-            $response['code'] = 1;
-          }
+         
         }else {
             
             $response['error'] = true;   
@@ -213,6 +237,41 @@ require_once 'cors.php';
             }
           break;
           
+          case 's_cart':  
+            if($data){
+              // if(1==1){
+              // $data=array();
+              // if(isset($search)&& $search!==" "&& $search!=="")
+              $cid = $data['cid'];
+  
+              $qa = "SELECT * FROM emails WHERE eid='".$cid."' ";
+              $mData=[];
+              $qa1=mysqli_query($conn,$qa);
+              if(@mysqli_num_rows($qa1)>0){	
+              while($row=@mysqli_fetch_assoc($qa1)){
+                $mData=$row;
+             
+              }
+        
+            $response['error'] = false;   
+            $response['message'] = "ok";   
+            $response['val'] = 1;   
+            $response['d'] =$mData;
+  
+          }else{
+                  $response['error'] = true;   
+                  $response['message'] = 0;
+                  $response['val'] = 0;   
+                  $response['data'] =$qa ;
+                }
+             
+           
+              } else{
+                $response['error'] = true;   
+                $response['message'] = 'required parameters are not available';
+              }
+            break;
+            
           case 'a_search':  
             if($data){
               // if(1==1){

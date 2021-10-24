@@ -65,6 +65,12 @@ export default new Router({
       props: true
     },
     {
+      path:  '/md/:cid/cart',
+      name: 'Cart',
+      component: Cart,
+      props: true
+    },
+    {
       path:  '/contact',
       name: 'Contact',
       component: Contact,

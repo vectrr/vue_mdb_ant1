@@ -33,7 +33,7 @@
         v-decorator="[
           'name',
           {
-            rules: [{ required: true, message: 'Please input your Name!', whitespace: true }],
+            rules: [{ required: true, message: 'Please input your Name!', whitespace: true,value:nm }],
           },
         ]"
       />
@@ -233,6 +233,8 @@ export default {
         // mdbIcon,
         // mdbDatatable2 
       },
+      
+  props: ['cid'],
   data() {
     return {
       confirmDirty: false,
@@ -275,15 +277,6 @@ export default {
         var murl=this.$store.state.mUrl;
         // var form_data = new FormData();
 
-
-
-      // form_data.append('nm',this.mData.name);
-      // form_data.append('phone',this.mData.phone);
-      // form_data.append('email',this.mData.email);
-      // form_data.append('message',this.mData.msg);
-      // form_data.append('url',this.mData.msg);
-// this.mData.append('nmz',"123");
-      console.log("form_data: "+JSON.stringify(this.mData));
       // console.log("form_data: "+this.mData.nmz);
       
 // Display the key/value pairs
@@ -301,6 +294,8 @@ export default {
     msg:this.mData.msg,
     mCarray:mCarray
  };
+ 
+      console.log("form_data: "+JSON.stringify(article));
       axios({
           method: 'POST',
           // url: 'http://localhost/nw/vap/regApi.php?apicall=signup'
@@ -310,7 +305,7 @@ export default {
       })
       .then((response) => {
         this.sending = false
-        // console.log("response: "+response);
+        console.log("response: "+ JSON.stringify(response));
         // console.log("response1: "+ JSON.stringify(response.data));
        
     if(response.data.code==1){ 

@@ -26,6 +26,7 @@
 
 <script>
 import item from "./item.vue"
+
 export default {
   props: {
     posts: {
@@ -36,6 +37,7 @@ export default {
   methods:{
     removeItem(){
       console.log("r2");
+      
       this.$emit("reload");
       
     },  

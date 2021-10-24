@@ -13,8 +13,8 @@
 
 
        
-          <mlist :posts="products" :key="list_key"  @reload="reload" />
-        <upload />
+          <mlist :posts="products" :key="list_key"  @reload="reload" :cid="cid" />
+        <upload :cid="cid" />
          </md-card>
     
    
@@ -24,6 +24,7 @@
 
 <script>
 import upload from "./upload.vue"
+// import upload from "../contact/form.vue"
 import mlist from "./list.vue"
 import axios from "axios"
 import {  mdbEdgeHeader,  } from 'mdbvue';
@@ -44,6 +45,7 @@ export default {
   },
   
 
+  props: ['cid'],
   data() {
     return {
        top:30,
@@ -51,9 +53,47 @@ export default {
       products: [],
       sending: false, 
        list_key:0,
+       p:null,
     }
   },
   methods: {
+    
+    mSearchitem(id){
+     
+        this.sending = true
+        var murl=this.$store.state.mUrl;
+    
+          const article = { 
+              cid:id 
+          };
+          
+      console.log("form_data: "+JSON.stringify(article));
+      axios({
+          method: 'POST',
+          // url: 'http://localhost/nw/vap/regApi.php?apicall=signup'
+          url: murl+'api.php?apicall=s_cart',
+          data: article,
+          config: { headers: {'Content-Type': 'multipart/form-data' }}
+      })
+      .then((response) => {
+        this.sending = false
+        // console.log("response: "+ JSON.stringify(response));
+        console.log("response2: "+ JSON.stringify(response.data.d.p));
+       
+    if(response.data.val==1){ 
+            // this.emsg = response.data.message;
+            this.p=response.data.d.p;
+              this.fetchNews();
+           
+          }
+      })
+      .catch(function (response) {
+          //handle error
+          console.log("error"+response)
+      });
+        // Instead of this timeout, here you can call your API
+      //  this.sending = false
+    },
        reload(){
       console.log("reloading...");
       // this.list_key=this.list_key+1;
@@ -76,15 +116,22 @@ export default {
       console.log(broken);
     },
      fetchNews() {
+       const p=this.p;
+        console.log("p...."+p);
         this.sending=true;
         var murl=this.$store.state.mUrl;
     
         var mCarray=[];
     
-      if(this.$cookies.isKey("mp")){
+      if(this.$cookies.isKey("mp")||p!=null){
           // mp=this.$cookies.get("mp");
-           mCarray=JSON.parse(this.$cookies.get("mp"))
+          if(p!=null){
+            mCarray=JSON.parse(p);
+          }else{
 
+           mCarray=JSON.parse(this.$cookies.get("mp"))
+          }
+            console.log("m= "+mCarray);
      
         const mData = { 
           mc:mCarray,
@@ -126,12 +173,21 @@ export default {
           //handle error
           console.log("error"+response)
       });
-}  
+  }  
     },
   },
   mounted() {
+  
+    if(this.cid!="" && this.cid!=undefined){
+      console.log("url ok="+this.cid)
+      this.mSearchitem(this.cid);
+    }else{
+      
     this.fetchNews()
+      console.log("url not ok")
+    }
   },
+
 
 }
 </script>

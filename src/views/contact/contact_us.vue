@@ -7,7 +7,7 @@
       </mdb-edge-header>
           
      </div>
-    <fom />
+    <fom  />
    
   </Layout>
 </template>
@@ -28,7 +28,6 @@ export default {
     // mdbInput,
     // mdbCardBody
   },
-  
 
   data() {
     return {
@@ -48,9 +47,17 @@ export default {
       console.log(broken);
     },
   },
-  mounted() {
-    // this.fetchNews()
+    mounted() {
+    if(this.mCarray!="" && this.mCarray!=undefined){
+      console.log("url ok="+this.name)
+      this.mSearchitem(this.name);
+    }else{
+      
+    this.fetchNews()
+      console.log("url not ok")
+    }
   },
+
 
 }
 </script>

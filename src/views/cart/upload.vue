@@ -30,8 +30,10 @@
       <a-input
         v-decorator="[
           'name',
-          {
-            rules: [{ required: true, message: 'Please input your Name!', whitespace: true }],
+       
+          {   
+           initialValue :name,
+            rules: [{ required: true, message: 'Please input your Name!', whitespace: true,}],
           },
         ]"
       />
@@ -41,6 +43,7 @@
         v-decorator="[
           'email',
           {
+           initialValue :mail,
             rules: [
               {
                 type: 'email',
@@ -61,6 +64,7 @@
         v-decorator="[
           'phone',
           {
+           initialValue :phone,
             rules: [{ required: true, message: 'Please input your phone number!' }],
           },
         ]"
@@ -126,77 +130,6 @@
    
       <md-snackbar :md-active.sync="error">{{ emsg }} </md-snackbar>
   </a-form>
-<!-- 
-    <form novalidate style="
-    margin-left: auto;
-    margin-right: auto;z-index:0;
-    justify-content: space-around;" class="md-layout" @submit.prevent="validateInquery">
-      <md-card class="md-layout-item md-size-50 md-small-size-100">
-        <md-card-header>
-          <div class="md-title text-center">Products</div>
-        </md-card-header>
-
-        <md-card-content>
-          <div class="md-layout md-gutter">
-             
-
-            <div class="md-layout-item md-small-size-100">
-              <md-field :class="getValidationClass('firstName')">
-                <label for="first-name">Name</label>
-                <md-input name="first-name" id="first-name" autocomplete="given-name" v-model="form.firstName" :disabled="sending" />
-                <span class="md-error" v-if="!$v.form.firstName.required">The first name is required</span>
-                <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid name</span>
-              </md-field>
-            </div>
-
-    
-            <div class="md-layout-item md-small-size-100">
-              <md-field :class="getValidationClass('age')">
-                <label for="age">Phone numeber</label>
-                <md-input type="number" id="age" name="age" autocomplete="age" v-model="form.age" :disabled="sending" />
-                <span class="md-error" v-if="!$v.form.age.required">The Price is required</span>
-                <span class="md-error" v-else-if="!$v.form.age.maxlength">Invalid Price</span>
-              </md-field>
-            </div>
-          </div>
-
-          <md-field :class="getValidationClass('email')">
-            <label for="email">Email</label>
-         
-            <span class="md-error" v-if="!$v.form.email.required">A valid email is required</span>
-            <span class="md-error" v-else-if="!$v.form.email.email">Invalid email</span>
-          </md-field>
-             
-               <div class="md-layout md-gutter">
-           
-            <div class="md-layout-item md-small-size-100">
-                          
-              <mdb-input
-                type="textarea"
-                outline
-                inputClass="z-depth-1 p-3"
-                label="Message"  :rows="3"
-                :disabled="sending"
-                v-model="desc"
-              />
-          
-            </div>
-          </div>
-        </md-card-content>
-     
-     
-
-            <div class="text-center py-4 mt-3">
-          <mdb-btn style="color:#e9ecef;background-color:#0c0f24;" color="" type="submit" :disabled="sending">Send Inquery</mdb-btn>
-        </div>
-
-      </md-card>
-
-      <md-snackbar :md-active.sync="userSaved">The Product {{ lastUser }} was saved with success!</md-snackbar>
-     
-    </form> -->
-    
-    
     </mdb-card-body>
   </mdb-card>
 
@@ -211,13 +144,6 @@
 <script>
   import {  mdbCard, mdbCardBody, mdbBtn } from 'mdbvue';
   
-//   import { validationMixin } from 'vuelidate';
-//   import {
-//     required,
- 
-//     minLength,
-//     maxLength
-//   } from 'vuelidate/lib/validators'
 
 const axios = require('axios');
 
@@ -231,12 +157,17 @@ export default {
         // mdbIcon,
         // mdbDatatable2 
       },
+      
+  props: ['cid'],
   data() {
     return {
       confirmDirty: false,
       mData:null, 
       error:false,
       emsg:null,
+      name:"namez",
+      mail:null,
+      phone:null,
       // residences,
       autoCompleteResult: [],
       formItemLayout: {
@@ -267,31 +198,61 @@ export default {
     this.form = this.$form.createForm(this, { name: 'register' });
   },
   methods: {
+
+    mSearchitem(id){
+     
+        this.sending = true
+        var murl=this.$store.state.mUrl;
     
+          const article = { 
+              cid:id 
+          };
+          
+      console.log("form_data: "+JSON.stringify(article));
+      axios({
+          method: 'POST',
+          // url: 'http://localhost/nw/vap/regApi.php?apicall=signup'
+          url: murl+'api.php?apicall=s_cart',
+          data: article,
+          config: { headers: {'Content-Type': 'multipart/form-data' }}
+      })
+      .then((response) => {
+        this.sending = false
+        // console.log("response: "+ JSON.stringify(response));
+        console.log("response1: "+ JSON.stringify(response.data));
+       
+    if(response.data.val==1){ 
+            // this.emsg = response.data.message;
+            this.name=response.data.d.nm;
+            this.mail=response.data.d.em;
+            this.phone=response.data.d.pn;
+             
+            // const mail=response.data.d.mail;
+            // const phone=response.data.d.phone;
+
+            // this.form.setFieldsValue({
+            //   name: "yyy",email:mail,phone:phone
+            //   });
+       
+          
+           
+          }
+      })
+      .catch(function (response) {
+          //handle error
+          console.log("error"+response)
+      });
+        // Instead of this timeout, here you can call your API
+      //  this.sending = false
+    },
       sendInquery () {
         this.sending = true
         var murl=this.$store.state.mUrl;
-        // var form_data = new FormData();
-
-
-
-      // form_data.append('nm',this.mData.name);
-      // form_data.append('phone',this.mData.phone);
-      // form_data.append('email',this.mData.email);
-      // form_data.append('message',this.mData.msg);
-      // form_data.append('url',this.mData.msg);
-// this.mData.append('nmz',"123");
-      console.log("form_data: "+JSON.stringify(this.mData));
-      // console.log("form_data: "+this.mData.nmz);
-      
-// Display the key/value pairs
-// for (var pair of form_data.entries()) {
-//     console.log(pair[0]+ ', ' + pair[1]); 
-// }
- var mCarray=[];
- if(this.$cookies.isKey("mp")){
-    mCarray=JSON.parse(this.$cookies.get("mp"))
- }
+     
+        var mCarray=[];
+          if(this.$cookies.isKey("mp")){
+              mCarray=JSON.parse(this.$cookies.get("mp"))
+          }
  const article = { 
     nm:this.mData.name ,
     phone:this.mData.phone,
@@ -299,6 +260,8 @@ export default {
     msg:this.mData.msg,
     mCarray:mCarray
  };
+ 
+      console.log("form_data: "+JSON.stringify(article));
       axios({
           method: 'POST',
           // url: 'http://localhost/nw/vap/regApi.php?apicall=signup'
@@ -308,7 +271,7 @@ export default {
       })
       .then((response) => {
         this.sending = false
-        // console.log("response: "+response);
+        console.log("response: "+ JSON.stringify(response));
         // console.log("response1: "+ JSON.stringify(response.data));
        
     if(response.data.code==1){ 
@@ -364,6 +327,17 @@ export default {
       }
       this.autoCompleteResult = autoCompleteResult;
     },
+  },
+    mounted() {
+  
+    if(this.cid!="" && this.cid!=undefined){
+      console.log("url ok="+this.cid)
+      this.mSearchitem(this.cid);
+    }else{
+      
+    // this.fetchNews()
+      console.log("url not ok")
+    }
   },
 };
 </script>
