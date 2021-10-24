@@ -71,7 +71,7 @@
  </div> -->
 
 
-     <mdb-card v-animateOnScroll="{animation: 'fadeInLeft', delay: 30}" wide>
+     <mdb-card v-animateOnScroll="{ delay: 30}" wide>
 		<mdb-view hover cascade class="ms">
         <a-carousel effect="slide" arrows  >
     <div
@@ -230,7 +230,8 @@ mdbModal,
           console.log(mCarray);
           console.log("remove1");
           // this.$parent.removeItem();
-          this.$emit("removeItem");
+               setTimeout(() =>  this.$emit("removeItem"), 500);
+       
       }
     
    // mp.push(this.post.id);

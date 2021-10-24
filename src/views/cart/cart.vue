@@ -59,9 +59,10 @@ export default {
       // this.list_key=this.list_key+1;
        this.refresh();
           
-      this.$parent.add2cart();
+      
         this.products=[];
-       this.fetchNews();
+        setTimeout(() => this.fetchNews(),this.$parent.add2cart(), 500);
+       
     },
       refresh(){
       console.log("refreshing...");
@@ -84,7 +85,7 @@ export default {
           // mp=this.$cookies.get("mp");
            mCarray=JSON.parse(this.$cookies.get("mp"))
 
-      alert("mCarray..."+mCarray);
+     
         const mData = { 
           mc:mCarray,
         }; 

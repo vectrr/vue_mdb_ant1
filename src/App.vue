@@ -72,7 +72,8 @@ import { isMobile } from 'mobile-device-detect';
       add2cart(){
         if(this.$cookies.isKey("mp")){
           var mCarray=JSON.parse(this.$cookies.get("mp"))
-          this.cItems=mCarray.length;      
+          this.cItems=mCarray.length;    
+            //  alert("cItems..."+this.cItems+"array= "+mCarray);
           }
       console.log("app");
       // this.$parent.add2cart();

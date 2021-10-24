@@ -221,7 +221,6 @@ mdbModal,
            mCarray=JSON.parse(this.$cookies.get("mp"))
           if(mCarray.length>1){
 
-        
           mCarray.forEach(element => {
             this.sMsg=element+"This item already exist" ;
             if(mCarray.includes(this.post.id)){
@@ -244,7 +243,7 @@ mdbModal,
          
       }else{
         
-console.log(this.post.id)
+        console.log(this.post.id)
          mCarray.push(this.post.id);
               // this.userSaved=true;
       }
