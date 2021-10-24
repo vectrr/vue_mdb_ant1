@@ -23,7 +23,7 @@
      
             <p class="lead text-white mt-3" style="font-weight: 700;">For all of you Motocycle needs  </p>
 
-            <input autocomplete="off"  class="form-control search_input dProperty" id="search" style="border-radius: 50px 50px;max-width: 400px;text-align:left;margin-left: auto;margin-right: auto;padding-left:32px;cursor:text; box-shadow:12px 12px 12px black;box-shadow: 1px 6px 14px 6px #09131596;" type="search" placeholder="Enter your desired location" aria-label="Search" v-on:keyup="keymonitor" >
+            <input autocomplete="off"  class="form-control search_input dProperty" id="search" style="border-radius: 50px 50px;max-width: 400px;text-align:left;margin-left: auto;margin-right: auto;padding-left:32px;cursor:text; box-shadow:12px 12px 12px black;box-shadow: 1px 6px 14px 6px #09131596;" type="search" placeholder="What do you want?" aria-label="Search" v-on:keyup="keymonitor" >
             <mdb-list-group v-if="dList">
             <div style="margin-top: 1px;box-shadow: rgb(9 19 21 / 59%) 1px 6px 14px 6px;max-width: 410px;
             margin-left: auto;
@@ -160,6 +160,7 @@
              type:post.type
            }))
            
+        console.log("mItems: "+ JSON.stringify(myData));
            this.dList=true;
         }else if(results.val==0){
            
