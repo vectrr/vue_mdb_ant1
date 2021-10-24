@@ -17,7 +17,7 @@
       <md-card class="md-layout-item md-size-50 md-small-size-100" style="margin-left: auto;
     margin-right: auto;">
         <md-card-header>
-          <div class="md-title text-center">Products</div>
+          <div class="md-title text-center">Contact us</div>
         </md-card-header>
 
         <md-card-content>

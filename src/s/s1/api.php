@@ -37,8 +37,13 @@ require_once 'cors.php';
               while($row=@mysqli_fetch_assoc($qa1)){
                 $eid=$row["eid"];
               }
-              
+              if(isset($data['mCarray'])&& !empty($data['mCarray'])){
+                
               $url="https://15minuteslogistics.co/#/md/".$eid."/cart";
+              }else{
+
+                $url="";
+              }
               // $url="http://localhost:8080/#/md/".$eid."/cart";
               $to = "info@15minuteslogistics.co";
               // $to = "ventor.pn@gmail.com";

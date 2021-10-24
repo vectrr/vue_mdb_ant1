@@ -15,7 +15,7 @@
             <!-- <div style="" class="mDiv">
               <mdb-input label="Search" v-model="value"  />
             </div> -->
-            <input class="form-control search_input dProperty mDiv" id="search" style="float:;border-radius: 50px 50px;max-width: 400px;text-align:left;margin-left: auto;margin-right: auto;padding-left:32px;cursor:text; box-shadow:12px 12px 12px black;box-shadow: 1px 6px 14px 6px #09131596;margin-bottom:33px" type="search" placeholder="Search motocycle" aria-label="Search"  v-on:keyup="keymonitor"/>
+            <input class="form-control search_input dProperty mDiv" id="search" style="float:;border-radius: 50px 50px;max-width: 400px;text-align:left;margin-left: auto;margin-right: auto;padding-left:32px;cursor:text; box-shadow:12px 12px 12px black;box-shadow: 1px 6px 14px 6px #09131596;margin-bottom:33px" type="search" placeholder="Search Sparepart" aria-label="Search"  v-on:keyup="keymonitor"/>
             
                 <!-- {{mItems}} -->
            
