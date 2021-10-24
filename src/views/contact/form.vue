@@ -1,19 +1,52 @@
 <template>
-  <div class="mTopu" style="max-width: 800px;
+  <div class="mTopu" style="max-width: 1200px;
     margin-left: auto;
     margin-right: auto;
     margin-top: -200px;
-    width: 90%;">
+    width: 99%;">
       
       <!-- <div style="background-color:#001529;height:63px;margin-top:-50px;" ></div> -->
  <md-progress-bar md-mode="indeterminate" v-if="sending" />
-  <mdb-card style="width:99%;max-width:1200px;margin-bottom:3%;padding-top:42px;padding-bottom:42px;margin-top; " >
+  <mdb-card style="width:98%;max-width:1200px;margin-bottom:3%;padding-top:42px;padding-bottom:42px;margin-top; " >
     <mdb-card-body>
-          <!-- <mdb-datatable-2 striped bordered small hover responsive fixedHeader
-      arrows maxHeight="400px" v-model="data" /> -->
-      
+         
+    <mdb-card style="width:98%;max-width:1220px;margin-left:auto;margin-right:auto; " >
+    <mdb-card-body>
+      <mdb-row>
+      <mdb-col col="sm">   
+        <a href="tel:0702220000">
+        <mdb-card style="width:98%;max-width:220px;margin-bottom:3%;padding-top:42px;padding-bottom:42px;margin-top;" >
+        <mdb-card-body style="margin-left:auto;margin-right:auto;">
+         
+          <p>  <mdb-icon icon="phone-alt" /> &nbsp; call</p>
+            <p>0702220000</p>
+              <mdb-btn style="color:#e9ecef;background-color:#0c0f24;" color="" >Call</mdb-btn>
+        </mdb-card-body>
+        </mdb-card>
+        </a> 
+    </mdb-col>
+      <mdb-col col="sm"> 
+        <a href='https://wa.me/0707276477' target='_blank'>
+        <mdb-card style="width:98%;max-width:220px;margin-bottom:3%;padding-top:42px;padding-bottom:42px;margin-top; " >
+          <mdb-card-body style="margin-left:auto;margin-right:auto;">
+             
+              <p>  <mdb-icon fab icon="whatsapp" /> &nbsp;whatsapp number</p>
+              <p>0707276477</p>
+               <mdb-btn style="color:#e9ecef;background-color:#0c0f24;" color="" >Call</mdb-btn>
+          </mdb-card-body>
+          </mdb-card>
+          </a> 
+    </mdb-col>
+    </mdb-row>
 
- <a-form :form="form" @submit="handleSubmit"  style="margin-left: auto;margin-right: auto;z-index:0;justify-content: space-around;" layout="vertical" >
+        
+  
+    
+    </mdb-card-body>
+    </mdb-card>
+      
+ 
+ <a-form :form="form" @submit="handleSubmit"  style="margin-left: auto;margin-right: auto;z-index:0;justify-content: space-around;width:90%;" layout="vertical" >
       <md-card class="md-layout-item md-size-50 md-small-size-100" style="margin-left: auto;
     margin-right: auto;">
         <md-card-header>
@@ -128,77 +161,7 @@
    
       <md-snackbar :md-active.sync="error">{{ emsg }} </md-snackbar>
   </a-form>
-<!-- 
-    <form novalidate style="
-    margin-left: auto;
-    margin-right: auto;z-index:0;
-    justify-content: space-around;" class="md-layout" @submit.prevent="validateInquery">
-      <md-card class="md-layout-item md-size-50 md-small-size-100">
-        <md-card-header>
-          <div class="md-title text-center">Products</div>
-        </md-card-header>
 
-        <md-card-content>
-          <div class="md-layout md-gutter">
-             
-
-            <div class="md-layout-item md-small-size-100">
-              <md-field :class="getValidationClass('firstName')">
-                <label for="first-name">Name</label>
-                <md-input name="first-name" id="first-name" autocomplete="given-name" v-model="form.firstName" :disabled="sending" />
-                <span class="md-error" v-if="!$v.form.firstName.required">The first name is required</span>
-                <span class="md-error" v-else-if="!$v.form.firstName.minlength">Invalid name</span>
-              </md-field>
-            </div>
-
-    
-            <div class="md-layout-item md-small-size-100">
-              <md-field :class="getValidationClass('age')">
-                <label for="age">Phone numeber</label>
-                <md-input type="number" id="age" name="age" autocomplete="age" v-model="form.age" :disabled="sending" />
-                <span class="md-error" v-if="!$v.form.age.required">The Price is required</span>
-                <span class="md-error" v-else-if="!$v.form.age.maxlength">Invalid Price</span>
-              </md-field>
-            </div>
-          </div>
-
-          <md-field :class="getValidationClass('email')">
-            <label for="email">Email</label>
-         
-            <span class="md-error" v-if="!$v.form.email.required">A valid email is required</span>
-            <span class="md-error" v-else-if="!$v.form.email.email">Invalid email</span>
-          </md-field>
-             
-               <div class="md-layout md-gutter">
-           
-            <div class="md-layout-item md-small-size-100">
-                          
-              <mdb-input
-                type="textarea"
-                outline
-                inputClass="z-depth-1 p-3"
-                label="Message"  :rows="3"
-                :disabled="sending"
-                v-model="desc"
-              />
-          
-            </div>
-          </div>
-        </md-card-content>
-     
-     
-
-            <div class="text-center py-4 mt-3">
-          <mdb-btn style="color:#e9ecef;background-color:#0c0f24;" color="" type="submit" :disabled="sending">Send Inquery</mdb-btn>
-        </div>
-
-      </md-card>
-
-      <md-snackbar :md-active.sync="userSaved">The Product {{ lastUser }} was saved with success!</md-snackbar>
-     
-    </form> -->
-    
-    
     </mdb-card-body>
   </mdb-card>
 
@@ -211,7 +174,7 @@
 </template>
 
 <script>
-  import {  mdbCard, mdbCardBody, mdbBtn } from 'mdbvue';
+  import {  mdbCard, mdbCardBody, mdbBtn,  mdbIcon,mdbRow,mdbCol,} from 'mdbvue';
   
 //   import { validationMixin } from 'vuelidate';
 //   import {
@@ -230,7 +193,9 @@ export default {
         mdbCard,
         mdbCardBody,
         // mdbInput,
-        // mdbIcon,
+        mdbIcon,
+        mdbRow,
+        mdbCol,
         // mdbDatatable2 
       },
       

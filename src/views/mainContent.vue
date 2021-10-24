@@ -160,7 +160,7 @@
              type:post.type
            }))
            
-        console.log("mItems: "+ JSON.stringify(myData));
+        // console.log("mItems: "+ JSON.stringify(myData));
            this.dList=true;
         }else if(results.val==0){
            
