@@ -34,7 +34,7 @@
     
        <div  style="margin-left: auto;margin-right: auto;">
          <mdb-btn  color="primary" rounded style="float:left" @click.native="modal = true">preview</mdb-btn>
-       <mdb-btn  color="primary" rounded style="float:">Purchase</mdb-btn>
+       <mdb-btn  color="primary" rounded style="float:">Buy</mdb-btn>
        </div>
 	</mdb-card>
  

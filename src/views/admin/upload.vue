@@ -11,9 +11,7 @@
     <a-tabs default-active-key="1" @change="callback">
       <a-tab-pane key="1" tab="Products">
       <form novalidate style="
-    margin-left: auto;
-    margin-right: auto;z-index:0;
-    justify-content: space-around;" class="md-layout" @submit.prevent="validateUser">
+    margin-left: auto;margin-right: auto;z-index:0;justify-content: space-around;" class="md-layout" @submit.prevent="validateUser1">
       <md-card class="md-layout-item md-size-50 md-small-size-100">
         <md-card-header>
           <div class="md-title">Products</div>
@@ -44,7 +42,7 @@
 
             <div class="md-layout-item md-small-size-100">
               <md-field :class="getValidationClass('firstName')">
-                <label for="first-name">Name</label>
+                <label for="first-name">Name1</label>
                 <!-- <a-input placeholder="Name" name="first-name" id="first-name" autocomplete="given-name" v-model="form.firstName" :disabled="sending" /> -->
                 <md-input name="first-name" id="first-name" autocomplete="given-name" v-model="form.firstName" :disabled="sending" />
                 <span class="md-error" v-if="!$v.form.firstName.required">The first name is required</span>
@@ -88,7 +86,7 @@
        
 
           <div class="text-center py-4 mt-3">
-          <mdb-btn style="color:#e9ecef;background-color:#0c0f24;" color="" type="submit" :disabled="sending">Add</mdb-btn>
+          <mdb-btn style="color:#e9ecef;background-color:#0c0f24;" color="" type="submit" :disabled="sending">Add11</mdb-btn>
         </div>
 
       </md-card>
@@ -205,10 +203,10 @@ const axios = require('axios');
           required,
           minLength: minLength(3)
         },
-        heading: {
-          required,
-          minLength: minLength(3)
-        },
+        // heading: {
+        //   required,
+        //   minLength: minLength(3)
+        // },
         lastName: {
           required,
           minLength: minLength(3)
@@ -287,6 +285,7 @@ const axios = require('axios');
       },
 
       saveUser () {
+        alert("foo");
         this.sending = true
         var murl=this.$store.state.mUrl;
         var form_data = new FormData();
@@ -374,15 +373,21 @@ const axios = require('axios');
 
       },
 
-      validateUser () {
+      validateUser1 () {
+       
         this.$v.$touch()
 
         if (!this.$v.$invalid) {
           this.saveUser()
+            alert("No error")
+        }else{
+          alert(JSON.stringify(this.$v))
+          console.log(JSON.stringify(this.$v))
         }
       },
       validateForm () {
         // this.$v.$touch()
+        // alert("gg")
         if(this.heading==null){
           this.error = true;
           this.emsg = "Please add a heading";

@@ -192,7 +192,7 @@
 @import  "../assets/css/soft-design-system.css?v=1.0.5";
   .bg {
     /* The image used */
-    background-image: url("../assets/img/curved-images/curved.jpg");
+    background-image: url("../assets/img/curved-images/curved1.jpg");
     /* background-image: url("../assets/img/3.jpg"); */
 
     /* Full height */
