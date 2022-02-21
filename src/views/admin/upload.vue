@@ -42,7 +42,7 @@
 
             <div class="md-layout-item md-small-size-100">
               <md-field :class="getValidationClass('firstName')">
-                <label for="first-name">Name1</label>
+                <label for="first-name">Name</label>
                 <!-- <a-input placeholder="Name" name="first-name" id="first-name" autocomplete="given-name" v-model="form.firstName" :disabled="sending" /> -->
                 <md-input name="first-name" id="first-name" autocomplete="given-name" v-model="form.firstName" :disabled="sending" />
                 <span class="md-error" v-if="!$v.form.firstName.required">The first name is required</span>
@@ -278,6 +278,7 @@ const axios = require('axios');
         this.form.age = null
         this.form.gender = null
         this.form.email = null
+       this.files = null
       },
       clearForm1 () {
         this.heading = null
@@ -291,6 +292,7 @@ const axios = require('axios');
         var form_data = new FormData();
 
       // form_data.append("file[]", this.files);
+     
       for( var i = 0; i < this.files.length; i++ ){
       let file = this.files[i];
       console.log(file);
@@ -329,7 +331,7 @@ const axios = require('axios');
           this.lastUser = `${this.form.firstName} ${this.form.lastName}`
           this.userSaved = true
           this.sending = false
-          // this.clearForm()
+          this.clearForm()
         }, 1500)
       },
       
@@ -377,11 +379,18 @@ const axios = require('axios');
        
         this.$v.$touch()
 
+          //  alert(this.files)
+       
         if (!this.$v.$invalid) {
-          this.saveUser()
+              if(this.files==undefined){
+             alert("Please add atleast one image")
+           }else{
+             this.saveUser()
+           }
+          // 
             // alert("No error")
         }else{
-          alert("error uploading")
+          alert("There is an error")
           // alert(JSON.stringify(this.$v))
           // console.log(JSON.stringify(this.$v))
         }
