@@ -86,7 +86,7 @@
        
 
           <div class="text-center py-4 mt-3">
-          <mdb-btn style="color:#e9ecef;background-color:#0c0f24;" color="" type="submit" :disabled="sending">Add11</mdb-btn>
+          <mdb-btn style="color:#e9ecef;background-color:#0c0f24;" color="" type="submit" :disabled="sending">Add</mdb-btn>
         </div>
 
       </md-card>
@@ -285,7 +285,7 @@ const axios = require('axios');
       },
 
       saveUser () {
-        alert("foo");
+        // alert("foo");
         this.sending = true
         var murl=this.$store.state.mUrl;
         var form_data = new FormData();
@@ -379,10 +379,11 @@ const axios = require('axios');
 
         if (!this.$v.$invalid) {
           this.saveUser()
-            alert("No error")
+            // alert("No error")
         }else{
-          alert(JSON.stringify(this.$v))
-          console.log(JSON.stringify(this.$v))
+          alert("error uploading")
+          // alert(JSON.stringify(this.$v))
+          // console.log(JSON.stringify(this.$v))
         }
       },
       validateForm () {
