@@ -40,7 +40,7 @@
     <!-- <mylist :posts="mItems" /> -->
           </a-affix>
 <div style="margin-left:auto;margin-right:auto;">
-          <mdb-btn  style="float:left;backgroundColor:#FFF !Important" @click="reload" >Refresh</mdb-btn>
+          <mdb-btn   @click="reload" >Refresh</mdb-btn>
 </div>
         <!-- <a-affix :offset-top="top1" :style="{left: 200}">
            <div style="" class="mDiv">

@@ -255,10 +255,15 @@ const axios = require('axios');
       
       margin-right:auto;
     }
-    $c1: rgb(167, 202, 164);
-    $c2:  #001529;
-    $c3:   rgba(0, 0, 0, 0.87) ;
-    $c4:  rgba(0, 0, 0, 0.87);
+    // $c1: rgb(167, 202, 164);
+    // $c2:  #001529;
+    // $c3:   rgba(8, 8, 8, 0.87) ;
+    // $c4:  rgba(0, 0, 0, 0.87);
+    
+    $c1: #275d2b;
+    $c2:  #275d2b;
+    $c3:   #275d2b ;
+    $c4:  #275d2b;
     .mTop{
         /* margin-top: 73px; */
         // background: linear-gradient(337deg,$c1 15%,  $c4 4%);
