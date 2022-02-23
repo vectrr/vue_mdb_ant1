@@ -2,7 +2,7 @@
   <Layout>
     <div style="margin-top: -15px; overflow-x: ;">
 
-      <mdb-edge-header color="" style="background-color: #080e35;position: fixed;
+      <mdb-edge-header color="" style="background-color: #275d2b;position: fixed;
     z-index: 0;
     top: 0;
     height: 50%;

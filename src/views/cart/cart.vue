@@ -3,7 +3,7 @@
     
    <div style="margin-top: -15px; overflow-x: ;">
        <md-progress-bar md-mode="indeterminate" v-if="sending" />
-       <mdb-edge-header color="" style="background-color: #080e35 ">
+       <mdb-edge-header color="" style="background-color: #275d2b ">
         <div class="home-page-background"></div>
       </mdb-edge-header>
           

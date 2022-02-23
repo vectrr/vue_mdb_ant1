@@ -113,10 +113,10 @@
 		</mdb-card-body>
     
        <div  style="margin-left: auto;margin-right: auto;">
-         <mdb-btn  color="primary" rounded style="float:left" @click.native="modal = true">preview</mdb-btn>
+         <mdb-btn  color="primary"  rounded style="float:left;backgroundColor:#275d2b" @click.native="modal = true">preview</mdb-btn>
              <a href="tel:0702220000">
              <mdb-btn color="primary" rounded >Call</mdb-btn>
-        </a> 
+        </a>
        <mdb-btn  color="primary" rounded style="float:" @click="showDrawer">Buy</mdb-btn>
        </div>
 	</mdb-card>
