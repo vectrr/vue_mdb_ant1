@@ -7,10 +7,10 @@
 
   <link id="pagestyle" href="../assets/css/soft-design-system.css?v=1.0.5" rel="stylesheet" />
 </head> -->
-
+<!-- #001402cc -->
   <!-- Navbar -->
 
-    <div class="page-header" style="min-height: 85vh " >
+    <div class="page-header" style="min-height: 85vh;backgroundColor:#001602cc" >
      
          <div class="container">
         <div class="row">
