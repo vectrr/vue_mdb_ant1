@@ -21,7 +21,7 @@
              <h1 class="text-white pt-3 mt-n5" style=" font-weight: 900;font-size: 2p;color: #ffffff;
     text-shadow: #cb6dff 1px 1px 2px;;" >15Minutes Logistics</h1>
      
-            <p class="lead text-white mt-3" style="font-weight: 700;">For all of you Motocycle needs  </p>
+            <p class="lead text-white mt-3" style="font-weight: 700;">For all of your Motocycle needs  </p>
 
             <input autocomplete="off"  class="form-control search_input dProperty" id="search" style="border-radius: 50px 50px;max-width: 400px;text-align:left;margin-left: auto;margin-right: auto;padding-left:32px;cursor:text; box-shadow:12px 12px 12px black;box-shadow: 1px 6px 14px 6px #09131596;" type="search" placeholder="What do you want?" aria-label="Search" v-on:keyup="keymonitor" >
             <mdb-list-group v-if="dList">

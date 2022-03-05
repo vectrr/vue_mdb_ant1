@@ -1,7 +1,7 @@
 <template>
 <div class=" bgz">
   
-    <div class="page-header" style="backgroundColor:#00160287;padding-bottom: 50px;" >
+    <div class="page-header" style="backgroundColor:#001602cc;padding-bottom: 50px;" >
   <!-- Card -->
   <mdb-card class="mTop1">
     <mdb-card-body>
