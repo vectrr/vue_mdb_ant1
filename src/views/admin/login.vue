@@ -1,5 +1,7 @@
 <template>
 <div class=" bgz">
+  
+    <div class="page-header" style="backgroundColor:#00160287;padding-bottom: 50px;" >
   <!-- Card -->
   <mdb-card class="mTop1">
     <mdb-card-body>
@@ -24,6 +26,7 @@
     </mdb-card-body>
   </mdb-card>
   <!-- Card -->
+</div>
 </div>
 </template>
 <script>
@@ -139,9 +142,9 @@ var murl=this.$store.state.mUrl;
  background-color:#0c0f24 !important
 }
  .bgz {
-   margin-top: -102px;
-    padding-top: 100px;
-    padding-bottom: 100px;
+   /* margin-top: -102px; */
+    /* padding-top: 100px; */
+    /* padding-bottom: 100px; */
     /* The image used */
     background-image: url("../../assets/img/curved-images/curved.jpg");
     /* background-image: url("../assets/img/3.jpg"); */
