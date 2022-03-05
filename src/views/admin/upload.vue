@@ -224,6 +224,14 @@ const axios = require('axios');
         }
       }
     },
+     mounted() {
+  
+      if(!this.$cookies.isKey("admin")){
+    
+        this.$router.push('/Admin');
+      }
+
+  },
     methods: {
         onCollapse(collapsed, type) {
       console.log(collapsed, type);

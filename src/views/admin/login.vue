@@ -32,7 +32,9 @@
 <script>
   import { mdbInput, mdbBtn, mdbCard, mdbCardBody } from 'mdbvue';
   const axios = require('axios');
-  
+  import * as cr from 'vue-nacl-crypter' 
+ 
+const Dcrypt = cr.VueNaclCrypter
 
   function hasErrors(fieldsError) {
   return Object.keys(fieldsError).some(field => fieldsError[field]);
@@ -98,11 +100,13 @@ var murl=this.$store.state.mUrl;
         // console.log("response2: "+response.data);
         if(response.data.val==22 & !response.data.error){
           
-          // var key=this.$store.state.mKey;
+          var key=this.$store.state.mKey;
+          console.log(key)
           // var cName = this.$Dcrypt.encrypt("response.data.name",  "key");
-          // var cId = this.$Dcrypt.encrypt(response.data.id,  key);
+          var cId = Dcrypt.encrypt(key,null,  key);
+          
           var cName=response.data.name;
-          var cId=response.data.id
+          // var cId=response.data.id
           this.$cookies.set("admin",cName,"22min");
           this.$cookies.set("id",cId,"22min");
           this.$router.push('/Products');

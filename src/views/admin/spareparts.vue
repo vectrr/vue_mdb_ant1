@@ -47,7 +47,8 @@ export default {
     return {
       products: [],
     }
-  },
+  }, 
+
   methods: {
     // Helper function for extracting a nested image object
    
@@ -100,6 +101,10 @@ axios({
     },
   },
   mounted() {
+      if(!this.$cookies.isKey("admin")){
+    
+        this.$router.push('/Admin');
+      }
     this.fetchNews()
   },
 

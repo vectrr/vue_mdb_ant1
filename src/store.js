@@ -6,7 +6,7 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     docs: true,
-    mKey: "mKey",
+    mKey: "mKey1mKey1mKey1mKey1mKey1mKey1m1",
     // mUrl: "http://localhost/w/15/vue_mdb_ant/src/s/s1/",
     // mUrl: "http://192.168.43.73/w/15/vue_mdb_ant/src/s/s1/",
     // mUrl: "http://s15minutes.kilaqitu.com/s1/",
